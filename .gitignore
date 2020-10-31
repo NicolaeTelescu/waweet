@@ -20,4 +20,5 @@ yarn-error.log*
 # Tasks and comments
 /Tasks.txt
 /public/javascripts/MongoDB.js
+/public/images/eating/Script.py
 /Database/
