@@ -25,7 +25,7 @@ export class MainContent extends React.Component {
 function Title(props) {
 	return (
 		<div className="title">
-			<h1>What are we eating <span style={{color: "red"}}>today</span>?</h1>
+			<h1>What are we eating <span className="todayTitle" style={{color: "red"}}>today</span>?</h1>
 		</div>
 	);
 }

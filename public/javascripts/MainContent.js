@@ -48,7 +48,7 @@ function Title(props) {
 			'What are we eating ',
 			React.createElement(
 				'span',
-				{ style: { color: "red" } },
+				{ className: 'todayTitle', style: { color: "red" } },
 				'today'
 			),
 			'?'

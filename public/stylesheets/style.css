@@ -80,3 +80,12 @@ a {
 .Options {
 	margin-top: 75px;
 }
+
+.todayTitle {
+	display: inline-block;
+	transition: transform 1.5s;
+}
+
+.todayTitle:hover {
+	transform: rotate(360deg);
+}
