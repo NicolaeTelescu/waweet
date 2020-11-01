@@ -1,8 +1,82 @@
+
+/* Fonts */
+@font-face {
+	font-family: Roboto;
+	src: url(../fonts/Roboto/Roboto-Regular.ttf);
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px Roboto;
+	margin: 0px;
 }
 
 a {
   color: #00B7FF;
+}
+
+.header {
+	background-color: #ffffe0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50px;
+}
+
+.mainContent {
+	flex-grow: 1;
+	margin-left: 10vw;
+	margin-right: 10vw;
+	text-align: center;
+	font-family: Roboto;
+}
+
+.footer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #90ee90;
+	height: 50px;
+}
+
+.title {
+	margin-top: 25px;
+}
+
+.searchingBar {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 50px;
+}
+
+.flex-container {
+	display: flex;
+	height: 100vh;
+	width: 100vw;
+	flex-direction: column;
+	align-items: stretch;
+}
+
+.SVGButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50px;
+	cursor: pointer;
+	transition: box-shadow 0.15s;
+	border: 1px solid #ced4da;
+	border-radius: 0.2rem;
+	margin-left: 0.2em;
+}
+
+.SVGButton:hover {
+	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.categoryButton {
+	margin-left: 25px;
+}
+
+.Options {
+	margin-top: 75px;
 }

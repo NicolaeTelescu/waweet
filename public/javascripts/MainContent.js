@@ -8,37 +8,58 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-import { Header } from './Header.js';
-import { MainContent } from './MainContent.js';
-import { Footer } from './Footer.js';
+import { SearchingBar } from './SearchingBar.js';
 
-export var App = function (_React$Component) {
-	_inherits(App, _React$Component);
+export var MainContent = function (_React$Component) {
+	_inherits(MainContent, _React$Component);
 
-	function App(props) {
-		_classCallCheck(this, App);
+	function MainContent(props) {
+		_classCallCheck(this, MainContent);
 
-		var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (MainContent.__proto__ || Object.getPrototypeOf(MainContent)).call(this, props));
 
-		_this.state = { liked: false };
+		_this.state = {};
 		return _this;
 	}
 
-	_createClass(App, [{
+	_createClass(MainContent, [{
 		key: 'render',
 		value: function render() {
 			return React.createElement(
 				'div',
-				{ className: 'flex-container' },
-				React.createElement(Header, null),
-				React.createElement(MainContent, null),
-				React.createElement(Footer, null)
+				{ className: 'mainContent' },
+				React.createElement(Title, null),
+				React.createElement(SearchingBar, null),
+				React.createElement(Options, null)
 			);
 		}
 	}]);
 
-	return App;
+	return MainContent;
 }(React.Component);
 
-var domContainer = document.querySelector('#react_container');
-ReactDOM.render(React.createElement(App, null), domContainer);
+function Title(props) {
+	return React.createElement(
+		'div',
+		{ className: 'title' },
+		React.createElement(
+			'h1',
+			null,
+			'What are we eating ',
+			React.createElement(
+				'span',
+				{ style: { color: "red" } },
+				'today'
+			),
+			'?'
+		)
+	);
+}
+
+function Options(props) {
+	return React.createElement(
+		'div',
+		{ className: 'Options' },
+		'Nothing for now'
+	);
+}

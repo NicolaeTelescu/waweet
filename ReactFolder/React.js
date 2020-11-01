@@ -1,23 +1,28 @@
 'use strict';
 
-class App extends React.Component {
+import {Header} from './Header.js';
+import {MainContent} from './MainContent.js';
+import {Footer} from './Footer.js';
+
+export class App extends React.Component {
 	constructor(props) {
 		super(props);
+		
 		this.state = { liked: false };
 	}
 	
 	render() {
-		if (this.state.liked) {
-      return 'You liked this';
-    }
-
-    return (
-      <button onClick={() => this.setState({ liked: true }) }>
-        Like
-      </button>
-    );
+		return (
+			<div className="flex-container">
+				
+				<Header />
+				<MainContent />
+				<Footer />
+			
+			</div>
+		);
 	}
 }
 
-let domContainer = document.querySelector('#like_button_container');
+let domContainer = document.querySelector('#react_container');
 ReactDOM.render(<App />, domContainer);

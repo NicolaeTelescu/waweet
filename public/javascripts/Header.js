@@ -8,37 +8,38 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-import { Header } from './Header.js';
-import { MainContent } from './MainContent.js';
-import { Footer } from './Footer.js';
+export var Header = function (_React$Component) {
+	_inherits(Header, _React$Component);
 
-export var App = function (_React$Component) {
-	_inherits(App, _React$Component);
+	function Header(props) {
+		_classCallCheck(this, Header);
 
-	function App(props) {
-		_classCallCheck(this, App);
+		var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
 
-		var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
-
-		_this.state = { liked: false };
+		_this.state = {};
 		return _this;
 	}
 
-	_createClass(App, [{
-		key: 'render',
+	_createClass(Header, [{
+		key: "render",
 		value: function render() {
 			return React.createElement(
-				'div',
-				{ className: 'flex-container' },
-				React.createElement(Header, null),
-				React.createElement(MainContent, null),
-				React.createElement(Footer, null)
+				"div",
+				{ className: "header" },
+				React.createElement(CategoryButton, { name: "Breakfast" }),
+				React.createElement(CategoryButton, { name: "Lunch" }),
+				React.createElement(CategoryButton, { name: "Drinks" })
 			);
 		}
 	}]);
 
-	return App;
+	return Header;
 }(React.Component);
 
-var domContainer = document.querySelector('#react_container');
-ReactDOM.render(React.createElement(App, null), domContainer);
+function CategoryButton(props) {
+	return React.createElement(
+		"button",
+		{ type: "button", className: "btn btn-warning categoryButton" },
+		props.name
+	);
+}

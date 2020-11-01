@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "run-p startNode startReact",
+    "start": "run-p startNode startReact startMongoDB",
     "startNode": "nodemon ./bin/www",
-    "startReact": "npx babel --watch ReactFolder --out-dir ./public/javascripts --presets react-app/prod"
+    "startReact": "npx babel --watch ReactFolder --out-dir ./public/javascripts --presets react-app/prod",
+    "startMongoDB": "mongod --dbpath=\"Database/\" --logpath=\"Database/logs/logs.txt\""
   },
   "dependencies": {
     "babel-preset-react-app": "^3.1.2",
@@ -21,6 +22,7 @@
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0"
+    "babel-cli": "^6.26.0",
+    "webpack": "^5.3.2"
   }
 }
