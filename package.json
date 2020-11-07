@@ -6,20 +6,24 @@
     "start": "run-p startNode startReact startMongoDB",
     "startNode": "nodemon ./bin/www",
     "startReact": "npx babel --watch ReactFolder --out-dir ./public/javascripts --presets react-app/prod",
-    "startMongoDB": "mongod --dbpath=\"Database/\" --logpath=\"Database/logs/logs.txt\""
+    "startMongoDB": "mongod --dbpath=\"Database/Database/\" --logpath=\"Database/Database/logs/logs.txt\""
   },
   "dependencies": {
     "babel-preset-react-app": "^3.1.2",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "mongodb": "^3.6.2",
+    "mongoose": "^5.10.11",
     "morgan": "~1.9.1",
     "npm-run-all": "^4.1.5",
+    "pug": "^3.0.0",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

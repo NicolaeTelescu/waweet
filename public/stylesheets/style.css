@@ -6,12 +6,12 @@
 }
 
 body {
-  font: 14px Roboto;
+	font: 14px Roboto;
 	margin: 0px;
 }
 
 a {
-  color: #00B7FF;
+	color: #00B7FF;
 }
 
 .header {
@@ -78,7 +78,7 @@ a {
 }
 
 .Options {
-	margin-top: 75px;
+	margin-top: 10vh;
 }
 
 .todayTitle {
