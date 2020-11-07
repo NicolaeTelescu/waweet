@@ -57,6 +57,12 @@ function Title(props) {
 }
 
 function Options(props) {
+	fetch("http://localhost:3000/items").then(function (response) {
+		return response.json();
+	}).then(function (data) {
+		console.log(data);
+	});
+
 	return React.createElement(
 		'div',
 		{ className: 'Options' },

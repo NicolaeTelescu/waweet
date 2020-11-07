@@ -31,6 +31,14 @@ function Title(props) {
 }
 
 function Options(props) {
+	fetch("http://localhost:3000/items")
+		.then(response => {
+			return response.json();
+		})
+		.then(data => {
+			console.log(data);
+		});
+	
 	return (
 		<div className="Options">
 			Nothing for now
