@@ -11,15 +11,26 @@ body {
 }
 
 a {
-	color: #00B7FF;
+	color: inherit;
+}
+
+#react-container {
+
+}
+
+.flex-container {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
 }
 
 .header {
 	background-color: #ffffe0;
 	display: flex;
+	flex-shrink: 0;
 	justify-content: center;
 	align-items: center;
-	height: 50px;
+	height: 10vh;
 }
 
 .mainContent {
@@ -32,11 +43,12 @@ a {
 
 .footer {
 	display: flex;
+	flex-shrink: 0;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	background-color: #90ee90;
-	height: 50px;
+	height: 10vh;
 }
 
 .title {
@@ -49,15 +61,7 @@ a {
 	margin-top: 50px;
 }
 
-.flex-container {
-	display: flex;
-	height: 100vh;
-	width: 100vw;
-	flex-direction: column;
-	align-items: stretch;
-}
-
-.SVGButton {
+.SVGButton, .item-button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -79,6 +83,7 @@ a {
 
 .Options {
 	margin-top: 10vh;
+	margin-bottom: 10vh;
 }
 
 .todayTitle {
@@ -88,4 +93,98 @@ a {
 
 .todayTitle:hover {
 	transform: rotate(360deg);
+}
+
+.item {
+	display: flex;
+	flex-direction: row;
+	margin-top: 20px;
+}
+
+.item-img {
+	object-fit: contain;
+}
+
+.item-border-animation {
+	position: absolute;
+	height: 100px;
+	width: 100px;
+	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+	border-radius: 0.1rem;
+	transition: box-shadow 0.15s;
+	z-index: 1;
+}
+
+.item-border-animation:hover {
+	box-shadow: 0 0 0 0.4rem rgba(0, 123, 255, 0.25);
+}
+
+.item-details {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	text-align: left;
+	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+	transition: box-shadow 0.15s;
+	border-radius: 0.1rem;
+	margin-left: 5%;
+	flex-grow: 1;
+}
+
+.item-details:hover {
+	box-shadow: 0 0 0 0.4rem rgba(0, 123, 255, 0.25);
+}
+
+.item-details-text {
+	display: flex;
+	flex-direction: column;
+	margin-left: 10px;
+	margin-top: 5px;
+}
+
+.item-details-buttons {
+	display: flex;
+	align-items: center;
+	margin-right: 10px;
+	margin-top: 5px;
+	height: 90px;
+	width: 70px;
+}
+
+.item-button {
+	border: 1px solid #aaafb4;
+	height: 30px;
+	width: 30px;
+}
+
+.item-button:hover {
+	box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25);
+}
+
+
+.item-rating {
+	position: absolute;
+	height: 100px;
+	width: 100px;
+}
+
+.item-rating-triangle {
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	left: 50px;
+	border-bottom: 25px solid transparent;
+	border-left: 25px solid transparent;
+}
+
+.item-rating-number {
+	position: relative;
+	top: -15px;
+	color: black;
+	font-weight: 600;
+	letter-spacing: 1.5px;
+}
+
+.item-title {
+	font-size: 2em;
 }

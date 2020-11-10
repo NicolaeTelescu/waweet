@@ -12,6 +12,7 @@ export class Header extends React.Component {
 			<div className="header">
 				<CategoryButton name="Breakfast" />
 				<CategoryButton name="Lunch" />
+				<CategoryButton name="Dinner" />
 				<CategoryButton name="Drinks" />
 			</div>
 		);

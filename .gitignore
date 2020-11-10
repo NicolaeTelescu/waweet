@@ -19,6 +19,6 @@ yarn-error.log*
 # Elements that should not be added
 
 # Tasks and comments
-/Tasks.txt
+/Auxiliar/
 /public/images/eating/Script.py
 /Database/

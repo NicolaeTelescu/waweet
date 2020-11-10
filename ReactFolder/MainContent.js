@@ -1,6 +1,10 @@
 'use strict';
 
 import {SearchingBar} from './SearchingBar.js';
+import {Item} from './Item.js';
+
+const useState = React.useState;
+const useEffect = React.useEffect;
 
 export class MainContent extends React.Component {
 	constructor(props) {
@@ -31,17 +35,25 @@ function Title(props) {
 }
 
 function Options(props) {
-	fetch("http://localhost:3000/items")
-		.then(response => {
-			return response.json();
-		})
-		.then(data => {
-			console.log(data);
-		});
+	const [items, setItems] = useState([]);
+
+	useEffect(() => {
+		fetch("http://localhost:3000/items")
+			.then(response => {
+				return response.json();
+			})
+			.then(data => {
+				data = data.concat(data);
+				setItems(data.map((el, index) => {
+					return <Item key={index} props={el} />
+				}));
+			});
+	}, []);
 	
+
 	return (
 		<div className="Options">
-			Nothing for now
+			{items}
 		</div>
 	);
 }

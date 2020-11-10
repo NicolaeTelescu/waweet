@@ -4,7 +4,7 @@ var Item = require('../Database/models/Item');
 
 // All items
 router.get('/', function(req, res, next) {
-  res.render('index', { params: "null"});
+  res.render('index', { params: "null" });
 });
 
 // Get all items
@@ -18,6 +18,7 @@ router.get('/items', async function(req, res, next) {
 });
 
 // Get an item
+/*
 router.get('/:itemID', async function(req, res, next) {
   try {
     
@@ -25,6 +26,7 @@ router.get('/:itemID', async function(req, res, next) {
     res.json({ message: error });
   }
 });
+*/
 
 // Add a new item
 router.post('/item', async function(req, res, next) {

@@ -28,6 +28,7 @@ export var Header = function (_React$Component) {
 				{ className: "header" },
 				React.createElement(CategoryButton, { name: "Breakfast" }),
 				React.createElement(CategoryButton, { name: "Lunch" }),
+				React.createElement(CategoryButton, { name: "Dinner" }),
 				React.createElement(CategoryButton, { name: "Drinks" })
 			);
 		}
