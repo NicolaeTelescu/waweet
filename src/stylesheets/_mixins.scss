@@ -1,0 +1,12 @@
+@mixin flexCenter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin displayData {
+	flex-grow: 1;
+	margin-left: 10vw;
+	margin-right: 10vw;
+	text-align: center;
+}
