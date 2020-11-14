@@ -43,7 +43,7 @@ export var SearchingBar = function (_React$Component) {
 		value: function render() {
 			return React.createElement(
 				"form",
-				{ className: "searchingBar" },
+				{ className: "home__searchingBar" },
 				React.createElement("input", { type: "text", className: "form-control col-3", id: "firstName", placeholder: "Search for something", value: this.state.value, required: "", onChange: this.handleChange }),
 				React.createElement(SearchingButton, { onClick: this.handleSubmit }),
 				React.createElement(FilterButton, { onClick: this.handleFilter })

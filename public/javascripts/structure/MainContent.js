@@ -10,8 +10,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-import { SearchingBar } from './SearchingBar.js';
-import { Item } from './Item.js';
+import { SearchingBar } from '../components/SearchingBar.js';
+import { Item } from '../components/Home_Item.js';
 
 var useState = React.useState;
 var useEffect = React.useEffect;
@@ -33,7 +33,7 @@ export var MainContent = function (_React$Component) {
 		value: function render() {
 			return React.createElement(
 				'div',
-				{ className: 'mainContent' },
+				{ className: 'home__mainContent' },
 				React.createElement(Title, null),
 				React.createElement(SearchingBar, null),
 				React.createElement(Options, null)
@@ -54,7 +54,7 @@ function Title(props) {
 			'What are we eating ',
 			React.createElement(
 				'span',
-				{ className: 'todayTitle', style: { color: "red" } },
+				{ className: 'home__todayTitle', style: { color: "red" } },
 				'today'
 			),
 			'?'
@@ -81,7 +81,7 @@ function Options(props) {
 
 	return React.createElement(
 		'div',
-		{ className: 'Options' },
+		{ className: 'home_options' },
 		items
 	);
 }

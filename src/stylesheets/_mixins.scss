@@ -10,3 +10,45 @@
 	margin-right: 10vw;
 	text-align: center;
 }
+
+@mixin mobile {
+	@media (max-width: 800px) {
+		@content
+	}
+}
+
+@mixin itemRating($width, $height, $font-size, $top-number: 0) {
+	position: absolute;
+	height: $height;
+	width: $width;
+
+	&-triangle {
+		position: absolute;
+		height: $height / 2;
+		width: $width / 2;
+		left: $width / 2;
+		border-bottom: $height / 4 solid transparent;
+		border-left: $width / 4 solid transparent;
+	}
+
+	&-number {
+		position: relative;
+		font-weight: 600;
+		top: $top-number;
+		letter-spacing: 1.5px;
+		font-size: $font-size;
+	}
+}
+
+@mixin borderAnimation($item-img-dimension, $color) {
+	position: absolute;
+	height: $item-img-dimension;
+	width: $item-img-dimension;
+	box-shadow: 0 0 0 0.2rem $color;
+	border-radius: 0.1rem;
+	transition: box-shadow 0.15s;
+	
+	&:hover {
+		box-shadow: 0 0 0 0.4rem $color;
+	}
+}

@@ -29,7 +29,8 @@ export var Header = function (_React$Component) {
 				React.createElement(CategoryButton, { name: "Breakfast" }),
 				React.createElement(CategoryButton, { name: "Lunch" }),
 				React.createElement(CategoryButton, { name: "Dinner" }),
-				React.createElement(CategoryButton, { name: "Drinks" })
+				React.createElement(CategoryButton, { name: "Drinks" }),
+				React.createElement(CategoryButton, { name: "All products", href: "/" })
 			);
 		}
 	}]);
@@ -39,8 +40,12 @@ export var Header = function (_React$Component) {
 
 function CategoryButton(props) {
 	return React.createElement(
-		"button",
-		{ type: "button", className: "btn btn-warning categoryButton" },
-		props.name
+		"a",
+		{ href: props.href },
+		React.createElement(
+			"button",
+			{ type: "button", className: "btn btn-warning header__categoryButton" },
+			props.name
+		)
 	);
 }

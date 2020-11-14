@@ -18,15 +18,18 @@ router.get('/items', async function(req, res, next) {
 });
 
 // Get an item
-/*
-router.get('/:itemID', async function(req, res, next) {
+router.get('/:itemSlug', async function(req, res, next) {
   try {
-    
+    var returnedItem;
+    const item = await Item.find({slug: req.params.itemSlug},
+      function(err, doc) {
+        returnedItem = doc;
+      });
+    res.render('index', { params: JSON.stringify(returnedItem).replace(/<\//g, "<\\/") });
   } catch (error) {
     res.json({ message: error });
   }
 });
-*/
 
 // Add a new item
 router.post('/item', async function(req, res, next) {
@@ -37,7 +40,8 @@ router.post('/item', async function(req, res, next) {
       ID: count + 1,
       title: req.body.title,
       category: req.body.category,
-      rating: req.body.rating
+      rating: req.body.rating,
+      slug: convertToSlug(req.body.title)
     });
 
     const savedItem = await item.save();
@@ -66,10 +70,14 @@ router.delete('/item', async function(req, res, next) {
 });
 
 
-// Example for sending data to React
+// Example for sending data to React - now it won't get here because of the '/:idItem' route
 router.get('/product', function(req, res, next) {
   const data = { title: 'I am very hungry' };
   res.render('index', { params: JSON.stringify(data).replace(/<\//g, "<\\/")}); // against injection
 });
+
+function convertToSlug(text) {
+	return text.toLowerCase().replace(/ /g,'-').replace(/[-]+/g, '-').replace(/[^\w-]+/g,'');
+}
 
 module.exports = router;

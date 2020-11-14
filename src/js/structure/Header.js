@@ -14,6 +14,7 @@ export class Header extends React.Component {
 				<CategoryButton name="Lunch" />
 				<CategoryButton name="Dinner" />
 				<CategoryButton name="Drinks" />
+				<CategoryButton name="All products" href="/" />
 			</div>
 		);
 	}
@@ -21,6 +22,6 @@ export class Header extends React.Component {
 
 function CategoryButton(props) {
 	return (
-		<button type="button" className="btn btn-warning categoryButton">{props.name}</button>
+		<a href={props.href}><button type="button" className="btn btn-warning header__categoryButton">{props.name}</button></a>
 	);
 }

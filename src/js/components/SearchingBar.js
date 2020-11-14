@@ -23,7 +23,7 @@ export class SearchingBar extends React.Component {
 	
 	render() {
 		return (
-			<form className="searchingBar">
+			<form className="home__searchingBar">
 				<input type="text" className="form-control col-3" id="firstName" placeholder="Search for something" value={this.state.value} required="" onChange={this.handleChange}></input>
 				<SearchingButton onClick={this.handleSubmit} />
 				<FilterButton onClick={this.handleFilter} />

@@ -1,13 +1,17 @@
 .home {
 
+	$item-img-dimension: 100px;
+
 	&__searchingBar {
 		display: flex;
 		justify-content: flex-end;
-		margin-top: 50px;
+		margin-top: 7.5vh;
+		margin-bottom: 7.5vh;
 	}
 	
 	&__mainContent {
 		@include displayData;
+		margin-bottom: 10vh;
 	}
 
 	&__todayTitle {
@@ -28,24 +32,23 @@
 		display: flex;
 		flex-direction: row;
 		margin-top: 20px;
-
 		
+
 		&__title {
 			font-size: 2em;
 		}
 
 		&__border-animation {
+			@include borderAnimation($item-img-dimension, rgba(0, 123, 255, 0.25));
+		}
+
+		&__img {
+			width: $item-img-dimension;
+			height: $item-img-dimension;
+		}
+
+		&__linkTo {
 			position: absolute;
-			height: 100px;
-			width: 100px;
-			box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-			border-radius: 0.1rem;
-			transition: box-shadow 0.15s;
-			z-index: 1;
-			
-			&:hover {
-				box-shadow: 0 0 0 0.4rem rgba(0, 123, 255, 0.25);
-			}
 		}
 
 		&__details {
@@ -92,26 +95,7 @@
 		}
 
 		&__rating {
-			position: absolute;
-			height: 100px;
-			width: 100px;
-		}
-		
-		&__rating-triangle {
-			position: absolute;
-			height: 50px;
-			width: 50px;
-			left: 50px;
-			border-bottom: 25px solid transparent;
-			border-left: 25px solid transparent;
-		}
-		
-		&__rating-number {
-			position: relative;
-			top: -15px;
-			color: black;
-			font-weight: 600;
-			letter-spacing: 1.5px;
+			@include itemRating($item-img-dimension, $item-img-dimension, inherit, -15px);
 		}
 	}
 }

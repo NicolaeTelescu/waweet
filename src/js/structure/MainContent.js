@@ -1,7 +1,7 @@
 'use strict';
 
-import {SearchingBar} from './SearchingBar.js';
-import {Item} from './Item.js';
+import {SearchingBar} from '../components/SearchingBar.js';
+import {Item} from '../components/Home_Item.js';
 
 const useState = React.useState;
 const useEffect = React.useEffect;
@@ -15,7 +15,7 @@ export class MainContent extends React.Component {
 	
 	render() {
 		return (		
-			<div className="mainContent">
+			<div className="home__mainContent">
 				
 				<Title />
 				<SearchingBar />
@@ -29,7 +29,7 @@ export class MainContent extends React.Component {
 function Title(props) {
 	return (
 		<div className="title">
-			<h1>What are we eating <span className="todayTitle" style={{color: "red"}}>today</span>?</h1>
+			<h1>What are we eating <span className="home__todayTitle" style={{color: "red"}}>today</span>?</h1>
 		</div>
 	);
 }
@@ -52,7 +52,7 @@ function Options(props) {
 	
 
 	return (
-		<div className="Options">
+		<div className="home_options">
 			{items}
 		</div>
 	);

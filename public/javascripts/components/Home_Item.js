@@ -5,15 +5,19 @@ export function Item(_ref) {
 	var ID = props.ID,
 	    title = props.title,
 	    category = props.category,
-	    rating = props.rating;
+	    rating = props.rating,
+	    slug = props.slug;
 
 	return React.createElement(
 		"div",
-		{ className: "item" },
-		React.createElement("img", { className: "item-img", src: "images/eating-small/" + ID + "-small.jpg", width: "100", height: "100" }),
-		React.createElement("div", { className: "item-border-animation" }),
-		React.createElement(ItemRating, { rating: rating }),
-		React.createElement(ItemDetails, { title: title, category: category })
+		{ className: "home__item" },
+		React.createElement("img", { className: "home__item__img", src: "images/eating-small/" + ID + "-small.jpg" }),
+		React.createElement(
+			"a",
+			{ className: "home__item__linkTo", href: '/' + slug },
+			React.createElement(ItemRating, { rating: rating })
+		),
+		React.createElement(ItemDetails, { title: title, category: category, slug: slug })
 	);
 }
 
@@ -30,13 +34,13 @@ function ItemRating(_ref2) {
 
 	return React.createElement(
 		"div",
-		{ className: "item-rating" },
+		{ className: "home__item__rating    home__item__border-animation" },
 		React.createElement(
 			"div",
-			{ className: "item-rating-triangle", style: myStyle },
+			{ className: "home__item__rating-triangle", style: myStyle },
 			React.createElement(
 				"div",
-				{ className: "item-rating-number" },
+				{ className: "home__item__rating-number" },
 				ratingModified
 			)
 		)
@@ -45,18 +49,23 @@ function ItemRating(_ref2) {
 
 function ItemDetails(_ref3) {
 	var title = _ref3.title,
-	    category = _ref3.category;
+	    category = _ref3.category,
+	    slug = _ref3.slug;
 
 	return React.createElement(
 		"div",
-		{ className: "item-details" },
+		{ className: "home__item__details" },
 		React.createElement(
 			"div",
-			{ className: "item-details-text" },
+			{ className: "home__item__details-text" },
 			React.createElement(
 				"span",
-				{ className: "item-title" },
-				title
+				{ className: "home__item__title" },
+				React.createElement(
+					"a",
+					{ href: '/' + slug },
+					title
+				)
 			),
 			React.createElement(
 				"span",
@@ -66,7 +75,7 @@ function ItemDetails(_ref3) {
 		),
 		React.createElement(
 			"div",
-			{ className: "item-details-buttons" },
+			{ className: "home__item__details-buttons" },
 			React.createElement(EditItemButton, null),
 			React.createElement(DeleteItemButton, null)
 		)
@@ -76,7 +85,7 @@ function ItemDetails(_ref3) {
 function EditItemButton(props) {
 	return React.createElement(
 		"a",
-		{ href: "/product", className: "item-button" },
+		{ href: "/product", className: "home__item__button" },
 		React.createElement(
 			"svg",
 			{ width: "1em", height: "1em", viewBox: "0 0 16 16", className: "bi bi-pencil", fill: "currentColor", xmlns: "http://www.w3.org/2000/svg" },
@@ -88,7 +97,7 @@ function EditItemButton(props) {
 function DeleteItemButton(props) {
 	return React.createElement(
 		"a",
-		{ href: "/product", className: "item-button" },
+		{ href: "/product", className: "home__item__button" },
 		React.createElement(
 			"svg",
 			{ width: "1em", height: "1em", viewBox: "0 0 16 16", className: "bi bi-trash", fill: "currentColor", xmlns: "http://www.w3.org/2000/svg" },

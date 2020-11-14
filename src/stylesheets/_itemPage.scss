@@ -1,5 +1,15 @@
 .itemPage {
 	
+	$img-dimension: 55vh;
+	
+	&__title {
+		margin-top: 3vh;
+		margin-bottom: 3vh;
+		text-align: center;
+		text-decoration: underline;
+		padding: 3vh;
+	}
+
 	&__container {
 		@include displayData;
 		display: flex;
@@ -10,11 +20,43 @@
 		display: flex;
 		flex-direction: row;
 		flex-grow: 1;
+		justify-content: space-between;
+		@include mobile {
+			flex-direction: column;
+			padding: 10vh 0;
+		}
+		align-items: center;
 	}
 
-	&__img {
-		width: 60vh;
-		height: 60vh;
+	&__details-img {
+		width: $img-dimension;
+		height: $img-dimension;
+	}
+
+	&__border-animation {
+		@include borderAnimation($img-dimension, rgba(1, 84, 173, 0.25));
+	}
+
+	&__details-text {
+		display: flex;
+		flex-direction: column;
+		text-align: left;
+		font-size: 2rem;
+		flex-grow: 1;
+		padding-left: 3vw;
+
+		&-category {
+			margin-top: 5vh;
+		}
+
+		&-value {
+			margin-left: 9vw;
+			margin-top: 2vh;
+		}
+	}
+
+	&__rating {
+		@include itemRating($img-dimension, $img-dimension, 6vh, -7.5vh);
 	}
 
 }
