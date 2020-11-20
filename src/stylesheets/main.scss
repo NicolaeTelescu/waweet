@@ -40,23 +40,3 @@ img {
 	flex-direction: column;
 	min-height: 100vh;
 }
-
-.SVGButton  {
-	@include flexCenter;
-	width: 50px;
-	cursor: pointer;
-	transition: box-shadow 0.15s;
-	border: 1px solid #ced4da;
-	border-radius: 0.2rem;
-	margin-left: 0.2em;
-
-	&:hover {
-		box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-	}
-}
-
-$theme-colors: (
-  "success": #28a745,
-  "info": #17a2b8,
-  "warning": #ffc107,
-);

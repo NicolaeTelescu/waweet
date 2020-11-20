@@ -4,6 +4,19 @@
 	align-items: center;
 }
 
+@mixin button {
+	@include flexCenter;
+	cursor: pointer;
+	transition: all 0.15s;
+	border: 1px solid #ced4da;
+	border-radius: 0.2rem;
+	margin-left: 0.2em;
+
+	&:hover {
+		box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+	}
+}
+
 @mixin displayData {
 	flex-grow: 1;
 	margin-left: 10vw;

@@ -2,8 +2,10 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var fileUpload = require('express-fileupload');
 var cors = require('cors');
 require('dotenv/config');
 
@@ -17,10 +19,25 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use(cors());
-app.use(logger('dev'));
+// app.use(logger('dev')); -> For logs
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  secret: 'keyboard penguin',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: false,
+    maxAge: 60000 
+  }
+}
+));
+app.use(fileUpload({
+  limits: { fileSize: 10 * 1024 * 1024 },
+  useTempFiles : true,
+  tempFileDir : '/src/tmp/'
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 

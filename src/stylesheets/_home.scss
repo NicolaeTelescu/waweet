@@ -4,9 +4,15 @@
 
 	&__searchingBar {
 		display: flex;
-		justify-content: flex-end;
+		justify-content: space-between;
 		margin-top: 7.5vh;
 		margin-bottom: 7.5vh;
+	}
+
+	&__searchFields {
+		display: flex;
+		justify-content: flex-end;
+		flex-grow: 1;
 	}
 	
 	&__mainContent {
@@ -23,9 +29,23 @@
 		}
 	}
 
+	&__button {
+		@include button;
+		width: 50px;
+	}
+
 	&__options {
 		margin-top: 10vh;
 		margin-bottom: 10vh;
+	}
+
+	&__message {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		position: absolute;
+		top: 12%;
+		right: 2%;
 	}
 
 	&__item {
@@ -84,14 +104,10 @@
 		}
 
 		&__button {
-			@extend .SVGButton;
+			@include button;
 			border: 1px solid #aaafb4;
 			height: 30px;
 			width: 30px;
-			
-			&:hover {
-				box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25);
-			}
 		}
 
 		&__rating {

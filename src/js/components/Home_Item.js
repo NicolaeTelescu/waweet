@@ -5,8 +5,8 @@ export function Item({props}) {
 	return (
 		<div className="home__item">
 			
-			<img className="home__item__img" src={"images/eating-small/" + ID + "-small.jpg"}></img>
-			<a className="home__item__linkTo" href={'/' + slug}>
+			<img className="home__item__img" src={"/images/eating-small/" + ID + "-small.jpg"}></img>
+			<a className="home__item__linkTo" href={'/item/show/' + slug}>
 				<ItemRating rating={rating} />
 			</a>
 			<ItemDetails title={title} category={category} slug={slug} />
@@ -37,7 +37,7 @@ function ItemDetails({title, category, slug}) {
 	return (
 		<div className="home__item__details">
 			<div className="home__item__details-text">
-				<span className="home__item__title"><a href={'/' + slug}>{title}</a></span>
+				<span className="home__item__title"><a href={'/item/show/' + slug}>{title}</a></span>
 				<span>{category}</span>
 			</div>
 			<div className="home__item__details-buttons">

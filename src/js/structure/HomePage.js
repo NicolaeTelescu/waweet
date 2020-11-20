@@ -6,7 +6,7 @@ import {Item} from '../components/Home_Item.js';
 const useState = React.useState;
 const useEffect = React.useEffect;
 
-export class MainContent extends React.Component {
+export class HomePage extends React.Component {
 	constructor(props) {
 		super(props);
 		

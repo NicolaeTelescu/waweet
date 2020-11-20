@@ -11,10 +11,10 @@ export function Item(_ref) {
 	return React.createElement(
 		"div",
 		{ className: "home__item" },
-		React.createElement("img", { className: "home__item__img", src: "images/eating-small/" + ID + "-small.jpg" }),
+		React.createElement("img", { className: "home__item__img", src: "/images/eating-small/" + ID + "-small.jpg" }),
 		React.createElement(
 			"a",
-			{ className: "home__item__linkTo", href: '/' + slug },
+			{ className: "home__item__linkTo", href: '/item/show/' + slug },
 			React.createElement(ItemRating, { rating: rating })
 		),
 		React.createElement(ItemDetails, { title: title, category: category, slug: slug })
@@ -63,7 +63,7 @@ function ItemDetails(_ref3) {
 				{ className: "home__item__title" },
 				React.createElement(
 					"a",
-					{ href: '/' + slug },
+					{ href: '/item/show/' + slug },
 					title
 				)
 			),

@@ -7,7 +7,8 @@
     "startNode": "nodemon ./bin/www",
     "startReact": "npx babel --watch src/js --out-dir ./public/javascripts --presets react-app/prod",
     "startMongoDB": "mongod --dbpath=\"Database/Database/\" --logpath=\"Database/Database/logs/logs.txt\"",
-    "startSASS": "node-sass -q --watch --output-style compressed src/stylesheets/main.scss public/stylesheets/style.css"
+    "startSASS": "node-sass -q --watch --output-style compressed src/stylesheets/main.scss public/stylesheets/style.css",
+    "mongoSeed": "node ./Database/seeding/index.js"
   },
   "dependencies": {
     "@babel/core": "^7.12.3",
@@ -20,18 +21,26 @@
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "express": "~4.16.1",
+    "express-fileupload": "^1.2.0",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.6.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
+    "jimp": "^0.16.1",
+    "mongo-seeding": "^3.5.0",
     "mongodb": "^3.6.2",
     "mongoose": "^5.10.11",
     "morgan": "~1.9.1",
     "node-sass": "^5.0.0",
     "npm-run-all": "^4.1.5",
+    "promise": "^8.1.0",
     "pug": "^3.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-redux": "^7.2.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5",
     "style-loader": "^2.0.0"
   },
   "devDependencies": {

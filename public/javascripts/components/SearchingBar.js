@@ -42,11 +42,16 @@ export var SearchingBar = function (_React$Component) {
 		key: "render",
 		value: function render() {
 			return React.createElement(
-				"form",
+				"div",
 				{ className: "home__searchingBar" },
-				React.createElement("input", { type: "text", className: "form-control col-3", id: "firstName", placeholder: "Search for something", value: this.state.value, required: "", onChange: this.handleChange }),
-				React.createElement(SearchingButton, { onClick: this.handleSubmit }),
-				React.createElement(FilterButton, { onClick: this.handleFilter })
+				React.createElement(AddItemButton, null),
+				React.createElement(
+					"div",
+					{ className: "home__searchFields" },
+					React.createElement("input", { type: "text", className: "form-control col-3", id: "firstName", placeholder: "Search for something", value: this.state.value, required: "", onChange: this.handleChange }),
+					React.createElement(SearchingButton, { onClick: this.handleSubmit }),
+					React.createElement(FilterButton, { onClick: this.handleFilter })
+				)
 			);
 		}
 	}]);
@@ -57,7 +62,7 @@ export var SearchingBar = function (_React$Component) {
 function SearchingButton(props) {
 	return React.createElement(
 		"div",
-		{ className: "SVGButton", onClick: props.onClick },
+		{ className: "home__button", onClick: props.onClick },
 		React.createElement(
 			"svg",
 			{ width: "2em", height: "2em", viewBox: "0 0 16 16", className: "bi bi-search", fillRule: "currentColor", xmlns: "http://www.w3.org/2000/svg" },
@@ -70,11 +75,23 @@ function SearchingButton(props) {
 function FilterButton(props) {
 	return React.createElement(
 		"div",
-		{ className: "SVGButton", onClick: props.onClick },
+		{ className: "home__button", onClick: props.onClick },
 		React.createElement(
 			"svg",
 			{ width: "2em", height: "2em", viewBox: "0 0 16 16", className: "bi bi-list", fill: "currentColor", xmlns: "http://www.w3.org/2000/svg" },
 			React.createElement("path", { fillRule: "evenodd", d: "M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" })
+		)
+	);
+}
+
+function AddItemButton(props) {
+	return React.createElement(
+		"a",
+		{ className: "home__button", href: "/item/add" },
+		React.createElement(
+			"svg",
+			{ width: "2em", height: "2em", viewBox: "0 0 16 16", className: "bi bi-plus", fill: "currentColor", xmlns: "http://www.w3.org/2000/svg" },
+			React.createElement("path", { fillRule: "evenodd", d: "M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" })
 		)
 	);
 }

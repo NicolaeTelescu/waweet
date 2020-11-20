@@ -1,24 +1,30 @@
 'use strict';
 
-var useParams = ReactRouterDOM.useParams;
+import { setRating } from './../../redux/actions/index.js';
 
-export function ItemPage(props) {
+var useSelector = ReactRedux.useSelector;
+var useDispatch = ReactRedux.useDispatch;
+
+export function ShowItemPage(props) {
 	var item = params[0];
+	var dispatch = useDispatch()(setRating(item.rating));
 
-	var ratings = ['Disgusting', 'Very bad', 'Not good at all', 'I prefer something else', 'So and so', 'It could be better', 'Acceptable', 'Good', 'Delicious', 'Very tasty', 'Perfect'];
-	var ratingColors = ["#7a0000", "#a30000", "#e00000", "#ff5e00", "#ff9900", "#fff200", "#f6ff00", "#e3fc03", "#c2fc03", "#6fff00", "#00ff22"];
-	var ratingCategory = Math.floor(item.rating / 10);
-	var textForRating = ratings[ratingCategory];
+	var textForRating = useSelector(function (state) {
+		return state.text;
+	});
+	var colorForRating = useSelector(function (state) {
+		return state.color;
+	});
 	var ratingModified = Math.floor(item.rating / 10) + ',' + item.rating % 10;
 
 	var myStyle = {
-		backgroundColor: ratingColors[ratingCategory]
+		backgroundColor: colorForRating
 	};
 
 	var imgDimension = "55vh";
 	var triangleStyle = {
-		borderRight: "calc(" + imgDimension + "/4) solid " + ratingColors[ratingCategory],
-		borderTop: "calc(" + imgDimension + "/4) solid " + ratingColors[ratingCategory]
+		borderRight: "calc(" + imgDimension + "/4) solid " + colorForRating,
+		borderTop: "calc(" + imgDimension + "/4) solid " + colorForRating
 	};
 
 	return React.createElement(
@@ -30,7 +36,7 @@ export function ItemPage(props) {
 			React.createElement(
 				'div',
 				{ style: { display: "flex", flexGrow: "1" } },
-				React.createElement('img', { className: 'itemPage__details-img', src: "images/eating/" + item.ID + ".jpg" }),
+				React.createElement('img', { className: 'itemPage__details-img', src: "/images/eating/" + item.ID + ".jpg" }),
 				React.createElement(
 					'div',
 					{ className: 'itemPage__rating    itemPage__border-animation' },

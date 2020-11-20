@@ -1,42 +1,45 @@
 'use strict';
 
-import {Header} from './structure/Header.js';
-import {MainContent} from './structure/MainContent.js';
-import {ItemPage} from './structure/ItemPage.js';
-import {Footer} from './structure/Footer.js';
+import {Header} from './structure/layout/Header.js';
+import {Footer} from './structure/layout/Footer.js';
+import {Message} from './structure/layout/Message.js';
+import {HomePage} from './structure/HomePage.js';
+import {AllItemPages} from './structure/item/_All.js';
+import {getRating} from './redux/reducers/index.js';
 
+
+const Provider = ReactRedux.Provider;
 
 const Router = ReactRouterDOM.BrowserRouter;
 const Switch = ReactRouterDOM.Switch;
 const Route = ReactRouterDOM.Route;
 
 
-export class App extends React.Component {
-	constructor(props) {
-		super(props);
-		
-		this.state = { };
-	}
-	
-	render() {
-		return (
-			<div className="flex-container">
-				
-				<Header />
-				<Switch>
-					<Route exact path="/">
-						<MainContent />
-					</Route>
-					<Route exact path="/:itemID">
-						<ItemPage />
-					</Route>
-				</Switch>
-				<Footer />
+function App(props) {
+	return (
+		<div className="flex-container">
 			
-			</div>
-		);
-	}
+			<Header />
+			<Message />
+			<Switch>
+				<Route exact path="/" component={HomePage} />
+				<Route path="/item" component={AllItemPages} />
+			</Switch>
+			<Footer />
+		
+		</div>
+	);
 }
 
+// Create store
+let store = Redux.createStore(getRating);
+
 let domContainer = document.querySelector('#react_container');
-ReactDOM.render(<Router><App /></Router>, domContainer);
+ReactDOM.render(
+	<Provider store={store}>
+		<Router>
+			<App />
+		</Router>
+	</Provider>,
+	domContainer
+);

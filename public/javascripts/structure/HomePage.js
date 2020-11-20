@@ -16,19 +16,19 @@ import { Item } from '../components/Home_Item.js';
 var useState = React.useState;
 var useEffect = React.useEffect;
 
-export var MainContent = function (_React$Component) {
-	_inherits(MainContent, _React$Component);
+export var HomePage = function (_React$Component) {
+	_inherits(HomePage, _React$Component);
 
-	function MainContent(props) {
-		_classCallCheck(this, MainContent);
+	function HomePage(props) {
+		_classCallCheck(this, HomePage);
 
-		var _this = _possibleConstructorReturn(this, (MainContent.__proto__ || Object.getPrototypeOf(MainContent)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (HomePage.__proto__ || Object.getPrototypeOf(HomePage)).call(this, props));
 
 		_this.state = {};
 		return _this;
 	}
 
-	_createClass(MainContent, [{
+	_createClass(HomePage, [{
 		key: 'render',
 		value: function render() {
 			return React.createElement(
@@ -41,7 +41,7 @@ export var MainContent = function (_React$Component) {
 		}
 	}]);
 
-	return MainContent;
+	return HomePage;
 }(React.Component);
 
 function Title(props) {

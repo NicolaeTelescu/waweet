@@ -1,66 +1,44 @@
 'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+import { Header } from './structure/layout/Header.js';
+import { Footer } from './structure/layout/Footer.js';
+import { Message } from './structure/layout/Message.js';
+import { HomePage } from './structure/HomePage.js';
+import { AllItemPages } from './structure/item/_All.js';
+import { getRating } from './redux/reducers/index.js';
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-import { Header } from './structure/Header.js';
-import { MainContent } from './structure/MainContent.js';
-import { ItemPage } from './structure/ItemPage.js';
-import { Footer } from './structure/Footer.js';
+var Provider = ReactRedux.Provider;
 
 var Router = ReactRouterDOM.BrowserRouter;
 var Switch = ReactRouterDOM.Switch;
 var Route = ReactRouterDOM.Route;
 
-export var App = function (_React$Component) {
-	_inherits(App, _React$Component);
+function App(props) {
+	return React.createElement(
+		'div',
+		{ className: 'flex-container' },
+		React.createElement(Header, null),
+		React.createElement(Message, null),
+		React.createElement(
+			Switch,
+			null,
+			React.createElement(Route, { exact: true, path: '/', component: HomePage }),
+			React.createElement(Route, { path: '/item', component: AllItemPages })
+		),
+		React.createElement(Footer, null)
+	);
+}
 
-	function App(props) {
-		_classCallCheck(this, App);
-
-		var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
-
-		_this.state = {};
-		return _this;
-	}
-
-	_createClass(App, [{
-		key: 'render',
-		value: function render() {
-			return React.createElement(
-				'div',
-				{ className: 'flex-container' },
-				React.createElement(Header, null),
-				React.createElement(
-					Switch,
-					null,
-					React.createElement(
-						Route,
-						{ exact: true, path: '/' },
-						React.createElement(MainContent, null)
-					),
-					React.createElement(
-						Route,
-						{ exact: true, path: '/:itemID' },
-						React.createElement(ItemPage, null)
-					)
-				),
-				React.createElement(Footer, null)
-			);
-		}
-	}]);
-
-	return App;
-}(React.Component);
+// Create store
+var store = Redux.createStore(getRating);
 
 var domContainer = document.querySelector('#react_container');
 ReactDOM.render(React.createElement(
-	Router,
-	null,
-	React.createElement(App, null)
+	Provider,
+	{ store: store },
+	React.createElement(
+		Router,
+		null,
+		React.createElement(App, null)
+	)
 ), domContainer);
