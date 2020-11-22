@@ -37,7 +37,7 @@ router.get('/', function(req, res, next) {
 // Get all items
 router.get('/items', async function(req, res, next) {
   try {
-    const items = await Item.find();
+    const items = await Item.find({show: true});
     res.json(items);
   } catch (err) {
     res.json(JSON.stringify(err.message, Object.getOwnPropertyNames(err)));
@@ -51,5 +51,7 @@ router.get('/product', function(req, res, next) {
   const data = { title: 'I am very hungry' };
   res.render('index', { params: JSON.stringify(data).replace(/<\//g, "<\\/")}); // against injection
 });
+
+
 
 module.exports = router;

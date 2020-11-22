@@ -1,7 +1,7 @@
 'use strict';
 
-import {SearchingBar} from '../components/SearchingBar.js';
-import {Item} from '../components/Home_Item.js';
+import {SearchingBar} from './components/SearchingBar.js';
+import {Item} from './components/Home_Item.js';
 
 const useState = React.useState;
 const useEffect = React.useEffect;

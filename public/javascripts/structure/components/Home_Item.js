@@ -99,9 +99,14 @@ function EditItemButton(_ref4) {
 function DeleteItemButton(_ref5) {
 	var slug = _ref5.slug;
 
+
+	var deleteElement = function deleteElement() {
+		document.getElementById("deleteItem-" + slug).submit();
+	};
+
 	return React.createElement(
-		"a",
-		{ href: "/product", className: "home__item__button" },
+		"form",
+		{ className: "home__item__button", action: "/item/delete/" + slug, method: "post", id: "deleteItem-" + slug, onClick: deleteElement },
 		React.createElement(
 			"svg",
 			{ width: "1em", height: "1em", viewBox: "0 0 16 16", className: "bi bi-trash", fill: "currentColor", xmlns: "http://www.w3.org/2000/svg" },

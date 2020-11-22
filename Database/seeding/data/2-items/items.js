@@ -8,7 +8,8 @@ const items=[
 		"category": "Lunch",
 		"rating": 60,
 		"__v": 0,
-		"slug": "aripioare-marinate"
+		"slug": "aripioare-marinate",
+		"show": true
 	},
 	{
 		"id": getObjectId('item2'),
@@ -17,7 +18,8 @@ const items=[
 		"category": "Drinks",
 		"rating": 20,
 		"__v": 0,
-		"slug": "bere-heineken"
+		"slug": "bere-heineken",
+		"show": true
 	},
 	{
 		"id": getObjectId('item3'),
@@ -26,7 +28,8 @@ const items=[
 		"category": "Drinks",
 		"rating": 45,
 		"__v": 0,
-		"slug": "ceai"
+		"slug": "ceai",
+		"show": true
 	},
 	{
 		"id": getObjectId('item4'),
@@ -35,7 +38,8 @@ const items=[
 		"category": "Snack",
 		"rating": 49,
 		"__v": 0,
-		"slug": "chipsuri-cu-aroma-de-pui"
+		"slug": "chipsuri-cu-aroma-de-pui",
+		"show": true
 	},
 	{
 		"id": getObjectId('item5'),
@@ -44,7 +48,8 @@ const items=[
 		"category": "Dinner",
 		"rating": 70,
 		"__v": 0,
-		"slug": "conserva-de-ton"
+		"slug": "conserva-de-ton",
+		"show": true
 	},
 	{
 		"id": getObjectId('item6'),
@@ -53,7 +58,8 @@ const items=[
 		"category": "Lunch",
 		"rating": 65,
 		"__v": 0,
-		"slug": "ceafa-de-porc-cu-piure"
+		"slug": "ceafa-de-porc-cu-piure",
+		"show": true
 	},
 	{
 		"id": getObjectId('item7'),
@@ -62,7 +68,8 @@ const items=[
 		"category": "Lunch",
 		"rating": 80,
 		"__v": 0,
-		"slug": "frigarui-cu-rosii"
+		"slug": "frigarui-cu-rosii",
+		"show": true
 	},
 	{
 		"id": getObjectId('item8'),
@@ -71,7 +78,8 @@ const items=[
 		"category": "Snack",
 		"rating": 65,
 		"__v": 0,
-		"slug": "gogoasa-cu-ciocolata"
+		"slug": "gogoasa-cu-ciocolata",
+		"show": true
 	},
 	{
 		"id": getObjectId('item9'),
@@ -80,7 +88,8 @@ const items=[
 		"category": "Snack",
 		"rating": 42,
 		"__v": 0,
-		"slug": "prajiturele-cu-lapte"
+		"slug": "prajiturele-cu-lapte",
+		"show": true
 	}
 ];
 

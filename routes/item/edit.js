@@ -12,7 +12,7 @@ const helpers = require('../../src/helpers/index');
 router.get('/item/edit/:itemSlug', async function(req, res, next) {
 	try {
 		const categories = await Category.find();
-		const item = await Item.findOne({slug: req.params.itemSlug});
+		const item = await Item.findOne({slug: req.params.itemSlug, show: true});
 
 	  	const params = {
 			categories: categories,
@@ -35,7 +35,7 @@ router.post('/item/edit/:itemSlug',
 	itemEditValidation,
 	async function(req, res, next) {
 		
-		const item = await Item.findOne({slug: req.params.itemSlug});
+		const item = await Item.findOne({slug: req.params.itemSlug, show: true});
 		const updatedFields = {
 			title: req.body.title,
 			category: req.body.category,
@@ -85,7 +85,7 @@ router.post('/item/edit/:itemSlug',
 				});
 			}
 			
-			req.session.success = 'The item has edited with success';
+			req.session.success = `\'${req.body.title}\' has been edited with success`;
 			req.session.errors = false;
 			res.redirect('/');
 

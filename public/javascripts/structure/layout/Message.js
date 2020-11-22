@@ -18,6 +18,10 @@ export function Message(props) {
  */
 	else return null;
 
+	setTimeout(function () {
+		$('.alert').alert('close');
+	}, 5000);
+
 	return React.createElement(
 		'div',
 		{ className: "home__message alert alert-" + className + " fade show", role: 'alert' },

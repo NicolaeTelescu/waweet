@@ -6,7 +6,7 @@ const { body, param } = require('express-validator');
 const titleLength = body('title', 'Your title must be between 4 and 25 characters').isLength({min: 4, max: 25});
 const addTitleInUse =
 	body('title').custom(title => {
-		return Item.find({slug: helpers.convertToSlug(title)}).then(items => {
+		return Item.find({slug: helpers.convertToSlug(title), show: true}).then(items => {
 			if (items.length > 0) {
 				return Promise.reject('Title already in use');
 			}
@@ -18,7 +18,7 @@ const editTitleInUse =
 		const oldSlug = req.params.itemSlug;
 		
 		if (newSlug !== oldSlug) {
-			return Item.find({slug: newSlug}).then(items => {
+			return Item.find({slug: newSlug, show: true}).then(items => {
 				if (items.length > 0) {
 					return Promise.reject('Title already in use');
 				}

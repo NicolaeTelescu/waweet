@@ -17,7 +17,14 @@ const ItemSchema = mongoose.Schema ({
 		type: String,
 		required: true
 	},
-	rating: Number
+	rating: {
+		type: Number,
+		required: true
+	},
+	show: {
+		type: Boolean,
+		required: true
+	}
 });
 
 module.exports = mongoose.model('Items', ItemSchema);

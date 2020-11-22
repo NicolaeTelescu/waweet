@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "run-p startNode startReact startMongoDB startSASS",
-    "startNode": "nodemon ./bin/www",
+    "start": "run-p startMongoDB startNode",
+    "startNode": "node ./bin/www",
+    "startDev": "run-p startNodemon startReact startMongoDB startSASS",
+    "startNodemon": "nodemon ./bin/www",
     "startReact": "npx babel --watch src/js --out-dir ./public/javascripts --presets react-app/prod",
     "startMongoDB": "mongod --dbpath=\"Database/Database/\" --logpath=\"Database/Database/logs/logs.txt\"",
     "startSASS": "node-sass -q --watch --output-style compressed src/stylesheets/main.scss public/stylesheets/style.css",

@@ -18,6 +18,9 @@ export function Message(props) {
 	*/
 	else return null;
 	
+	setTimeout(() => {
+		$('.alert').alert('close');
+	}, 5000);
 	
 	return (
 		<div className={"home__message alert alert-" + className + " fade show"} role="alert">
