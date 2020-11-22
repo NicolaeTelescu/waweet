@@ -1,5 +1,5 @@
 import { ShowItemPage } from './Show.js';
-import { AddItemPage } from './add/Add.js';
+import { AddItemPage } from './Add.js';
 import { EditItemPage } from './Edit.js';
 
 var Switch = ReactRouterDOM.Switch;

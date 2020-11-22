@@ -36,7 +36,7 @@ export var SearchingBar = function (_React$Component) {
 	}, {
 		key: "handleFilter",
 		value: function handleFilter(event) {
-			alert("Filter button was clicked");
+			alert("Filter button will come soon");
 		}
 	}, {
 		key: "render",

@@ -1,7 +1,7 @@
 'use strict';
 
-import {ContainerImage} from './ContainerImage.js';
-import {ContainerText} from './ContainerText.js';
+import {ContainerImage} from './layout/ContainerImage.js';
+import {ContainerText} from './layout/ContainerText.js';
 
 const useEffect = React.useEffect;
 
@@ -16,10 +16,12 @@ export function AddItemPage(props) {
 			categoryError: params.errors.find(element => element.param === 'category')
 		}
 	}
+
+	params.image = '';
 	
 
 	return (
-		<form className="itemPage__container" id="addItemForm" action="/item" method="post" encType="multipart/form-data" runat="server">
+		<form className="itemPage__container" id="itemForm" action="/item/add" method="post" encType="multipart/form-data" runat="server">
 			<div className="itemPage__details">
 				<ContainerImage errors={errors} />
 				<ContainerText errors={errors} />

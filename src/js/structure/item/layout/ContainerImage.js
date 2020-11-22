@@ -6,7 +6,7 @@ export function ContainerImage({errors}) {
 
 	return (
 		<div className="itemPage__container-img">
-			<img className="itemPage__details-img" />
+			<img className="itemPage__details-img" src={params.image ? params.image : null} />
 			<AddImageButton errors={errors} />
 			<ImageError errors={errors} />
 			<div className="itemPage__rating    itemPage__border-animation">
@@ -64,8 +64,11 @@ function ImageInputs(props) {
 function AddImageButton({errors}) {
 	
 	const buttonStyle = {
-		position: "absolute",
-		display: errors.imageError ? "none" : "visible"
+		position: "absolute"
+	}
+
+	if (errors.imageError || (params.form && params.form.ID)) {
+		buttonStyle.display = "none";
 	}
 	
 	return (

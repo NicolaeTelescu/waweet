@@ -76,16 +76,18 @@ function ItemDetails(_ref3) {
 		React.createElement(
 			"div",
 			{ className: "home__item__details-buttons" },
-			React.createElement(EditItemButton, null),
-			React.createElement(DeleteItemButton, null)
+			React.createElement(EditItemButton, { slug: slug }),
+			React.createElement(DeleteItemButton, { slug: slug })
 		)
 	);
 }
 
-function EditItemButton(props) {
+function EditItemButton(_ref4) {
+	var slug = _ref4.slug;
+
 	return React.createElement(
 		"a",
-		{ href: "/product", className: "home__item__button" },
+		{ href: "/item/edit/" + slug, className: "home__item__button" },
 		React.createElement(
 			"svg",
 			{ width: "1em", height: "1em", viewBox: "0 0 16 16", className: "bi bi-pencil", fill: "currentColor", xmlns: "http://www.w3.org/2000/svg" },
@@ -94,7 +96,9 @@ function EditItemButton(props) {
 	);
 }
 
-function DeleteItemButton(props) {
+function DeleteItemButton(_ref5) {
+	var slug = _ref5.slug;
+
 	return React.createElement(
 		"a",
 		{ href: "/product", className: "home__item__button" },

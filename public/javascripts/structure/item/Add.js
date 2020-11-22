@@ -5,7 +5,8 @@ import { ContainerText } from './layout/ContainerText.js';
 
 var useEffect = React.useEffect;
 
-export function EditItemPage(props) {
+export function AddItemPage(props) {
+
 	var errors = {};
 
 	if (params.errors) {
@@ -22,11 +23,11 @@ export function EditItemPage(props) {
 		};
 	}
 
-	params.image = '/images/eating/' + params.form.ID + '.jpg';
+	params.image = '';
 
 	return React.createElement(
 		'form',
-		{ className: 'itemPage__container', id: 'itemForm', action: "/item/edit/" + params.form.slug, method: 'post', encType: 'multipart/form-data', runat: 'server' },
+		{ className: 'itemPage__container', id: 'itemForm', action: '/item/add', method: 'post', encType: 'multipart/form-data', runat: 'server' },
 		React.createElement(
 			'div',
 			{ className: 'itemPage__details' },

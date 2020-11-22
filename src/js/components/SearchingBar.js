@@ -18,7 +18,7 @@ export class SearchingBar extends React.Component {
 	}
 	
 	handleFilter(event) {
-		alert("Filter button was clicked");
+		alert("Filter button will come soon");
 	}
 	
 	render() {
