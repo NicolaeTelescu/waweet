@@ -7,6 +7,7 @@ const config = {
 	dropDatabase: true,
 };
 
+
 const seeder = new Seeder(config);
 const collections = seeder.readCollectionsFromPath(
 	path.resolve('./Database/seeding/data'),
@@ -18,8 +19,8 @@ const collections = seeder.readCollectionsFromPath(
 seeder
 	.import(collections)
 	.then(() => {
-		console.log('Success');
+		console.log('DB has been filled with success');
 	})
 	.catch(err => {
-		console.log('Error', err);
+		console.log('Error when trying to seed the DB', err);
 	});

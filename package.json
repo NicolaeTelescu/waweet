@@ -5,12 +5,14 @@
   "scripts": {
     "start": "run-p startMongoDB startNode",
     "startNode": "node ./bin/www",
-    "startDev": "run-p startNodemon startReact startMongoDB startSASS",
+    "startDev": "run-p startSASS startReact startMongoDB startNodemon",
     "startNodemon": "nodemon ./bin/www",
     "startReact": "npx babel --watch src/js --out-dir ./public/javascripts --presets react-app/prod",
     "startMongoDB": "mongod --dbpath=\"Database/Database/\" --logpath=\"Database/Database/logs/logs.txt\"",
     "startSASS": "node-sass -q --watch --output-style compressed src/stylesheets/main.scss public/stylesheets/style.css",
-    "mongoSeed": "node ./Database/seeding/index.js"
+    "seedDB": "npm run createFilesDB && (run-p startMongoDB mongoSeed)",
+    "mongoSeed": "node ./Database/seeding/index.js",
+    "createFilesDB": "node ./Database/createFiles.js"
   },
   "dependencies": {
     "@babel/core": "^7.12.3",
