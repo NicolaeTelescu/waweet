@@ -69,19 +69,28 @@ function Options(props) {
 	    setItems = _useState2[1];
 
 	useEffect(function () {
-		fetch("http://localhost:3000/items").then(function (response) {
-			return response.json();
-		}).then(function (data) {
-			data = data.concat(data);
-			setItems(data.map(function (el, index) {
-				return React.createElement(Item, { key: index, props: el });
-			}));
-		});
+		var data = params.items.concat(params.items);
+
+		setItems(data.map(function (el, index) {
+			return React.createElement(Item, { key: index, props: el });
+		}));
 	}, []);
 
 	return React.createElement(
 		'div',
 		{ className: 'home_options' },
+		React.createElement(SearchMessage, null),
 		items
+	);
+}
+
+function SearchMessage(props) {
+
+	if (!params.search) return null;
+
+	return React.createElement(
+		'div',
+		{ className: 'home__item__search-message' },
+		params.search
 	);
 }

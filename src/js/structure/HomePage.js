@@ -37,23 +37,31 @@ function Title(props) {
 function Options(props) {
 	const [items, setItems] = useState([]);
 
+
 	useEffect(() => {
-		fetch("http://localhost:3000/items")
-			.then(response => {
-				return response.json();
-			})
-			.then(data => {
-				data = data.concat(data);
-				setItems(data.map((el, index) => {
-					return <Item key={index} props={el} />
-				}));
-			});
+		const data = params.items.concat(params.items);
+		
+		setItems(data.map((el, index) => {
+			return <Item key={index} props={el} />
+		}));
 	}, []);
 	
 
 	return (
 		<div className="home_options">
+			<SearchMessage />
 			{items}
+		</div>
+	);
+}
+
+function SearchMessage(props) {
+	
+	if (!params.search) return null;
+
+	return (
+		<div className="home__item__search-message">
+			{params.search}
 		</div>
 	);
 }

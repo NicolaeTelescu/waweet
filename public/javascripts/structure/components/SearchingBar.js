@@ -8,6 +8,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var useEffect = React.useEffect;
+
 export var SearchingBar = function (_React$Component) {
 	_inherits(SearchingBar, _React$Component);
 
@@ -31,7 +33,7 @@ export var SearchingBar = function (_React$Component) {
 	}, {
 		key: "handleSubmit",
 		value: function handleSubmit(event) {
-			alert("Submit button was clicked");
+			document.getElementById("searchingForm").submit();
 		}
 	}, {
 		key: "handleFilter",
@@ -42,13 +44,13 @@ export var SearchingBar = function (_React$Component) {
 		key: "render",
 		value: function render() {
 			return React.createElement(
-				"div",
-				{ className: "home__searchingBar" },
+				"form",
+				{ className: "home__searchingBar", action: "/", id: "searchingForm" },
 				React.createElement(AddItemButton, null),
 				React.createElement(
 					"div",
 					{ className: "home__searchFields" },
-					React.createElement("input", { type: "text", className: "form-control col-3", id: "firstName", placeholder: "Search for something", value: this.state.value, required: "", onChange: this.handleChange }),
+					React.createElement("input", { type: "text", name: "search", className: "form-control col-3", placeholder: "Search for something", value: this.state.value, onChange: this.handleChange }),
 					React.createElement(SearchingButton, { onClick: this.handleSubmit }),
 					React.createElement(FilterButton, { onClick: this.handleFilter })
 				)
@@ -73,14 +75,50 @@ function SearchingButton(props) {
 }
 
 function FilterButton(props) {
+
+	var categories = ['All categories', 'Breakfast', 'Lunch', 'Dinner', 'Drinks', 'Snack'].map(function (el, index) {
+		return React.createElement(
+			"div",
+			{ className: "dropdown-item", key: index },
+			React.createElement(
+				"div",
+				{ className: "form-check form-check-inline" },
+				React.createElement("input", { className: "form-check-input", type: "radio", name: "category", id: 'categoryOption' + index, value: el !== 'All categories' ? el : '', defaultChecked: el === 'All categories' ? true : false }),
+				React.createElement(
+					"label",
+					{ style: { fontSize: "14px" }, className: "form-check-label", htmlFor: 'categoryOption' + index },
+					el
+				)
+			)
+		);
+	});
+
 	return React.createElement(
 		"div",
-		{ className: "home__button", onClick: props.onClick },
+		{ className: "home__button" },
 		React.createElement(
-			"svg",
-			{ width: "2em", height: "2em", viewBox: "0 0 16 16", className: "bi bi-list", fill: "currentColor", xmlns: "http://www.w3.org/2000/svg" },
-			React.createElement("path", { fillRule: "evenodd", d: "M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" })
+			"a",
+			{ className: "home__dropdownSVG", "data-toggle": "dropdown" },
+			React.createElement(FilterButtonSVG, null)
+		),
+		React.createElement(
+			"div",
+			{ className: "dropdown-menu p-2" },
+			React.createElement(
+				"div",
+				{ className: "dropdown-header" },
+				"Categories"
+			),
+			categories
 		)
+	);
+}
+
+function FilterButtonSVG(props) {
+	return React.createElement(
+		"svg",
+		{ width: "2em", height: "2em", viewBox: "0 0 16 16", className: "bi bi-list", fill: "currentColor", xmlns: "http://www.w3.org/2000/svg" },
+		React.createElement("path", { fillRule: "evenodd", d: "M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" })
 	);
 }
 

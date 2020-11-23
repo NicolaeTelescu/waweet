@@ -1,5 +1,7 @@
 'use strict';
 
+const useEffect = React.useEffect;
+
 export class SearchingBar extends React.Component {
 	constructor(props) {
 		super(props);
@@ -14,7 +16,7 @@ export class SearchingBar extends React.Component {
 	}
 	
 	handleSubmit(event) {
-		alert("Submit button was clicked");
+		document.getElementById("searchingForm").submit();
 	}
 	
 	handleFilter(event) {
@@ -23,14 +25,14 @@ export class SearchingBar extends React.Component {
 	
 	render() {
 		return (
-			<div className="home__searchingBar">
+			<form className="home__searchingBar" action="/" id="searchingForm">
 				<AddItemButton />
 				<div className="home__searchFields">
-					<input type="text" className="form-control col-3" id="firstName" placeholder="Search for something" value={this.state.value} required="" onChange={this.handleChange}></input>
+					<input type="text" name="search" className="form-control col-3" placeholder="Search for something" value={this.state.value} onChange={this.handleChange}></input>
 					<SearchingButton onClick={this.handleSubmit} />
 					<FilterButton onClick={this.handleFilter} />
 				</div>
-			</div>
+			</form>
 		);
 	}
 }
@@ -47,12 +49,34 @@ function SearchingButton(props) {
 }
 
 function FilterButton(props) {
-	return (
-		<div className="home__button" onClick={props.onClick}>
-			<svg width="2em" height="2em" viewBox="0 0 16 16" className="bi bi-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-				<path fillRule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-			</svg>
+
+	const categories = ['All categories', 'Breakfast', 'Lunch', 'Dinner', 'Drinks', 'Snack'].map((el, index) => (
+		<div className="dropdown-item" key={index}>
+			<div className="form-check form-check-inline">
+				<input className="form-check-input" type="radio" name="category" id={'categoryOption' + index} value={el !== 'All categories' ? el : ''} defaultChecked={el === 'All categories' ? true : false} />
+				<label style={{fontSize: "14px"}} className="form-check-label" htmlFor={'categoryOption' + index}>{el}</label>
+			</div>
 		</div>
+	));
+
+	return (
+		<div className="home__button">
+			<a className="home__dropdownSVG" data-toggle="dropdown">
+				<FilterButtonSVG />
+			</a>
+			<div className="dropdown-menu p-2">
+				<div className="dropdown-header">Categories</div>
+				{categories}
+			</div>
+		</div>
+	);
+}
+
+function FilterButtonSVG(props) {
+	return (
+		<svg width="2em" height="2em" viewBox="0 0 16 16" className="bi bi-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+			<path fillRule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+		</svg>
 	);
 }
 

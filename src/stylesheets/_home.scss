@@ -34,6 +34,12 @@
 		width: 50px;
 	}
 
+	&__dropdownSVG {
+		@include flexCenter;
+		width: 100%;
+		height: 100%;
+	}
+
 	&__options {
 		margin-top: 10vh;
 		margin-bottom: 10vh;
@@ -56,6 +62,11 @@
 
 		&__title {
 			font-size: 2em;
+			transition: all 0.15s;
+
+			&:hover {
+				font-size: 2.1em;
+			}
 		}
 
 		&__border-animation {
@@ -112,6 +123,13 @@
 
 		&__rating {
 			@include itemRating($item-img-dimension, $item-img-dimension, inherit, -15px);
+		}
+
+		&__search-message {
+			text-align: left;
+			font-size: 2.25em;
+			margin-left: 5vw;
+			margin-bottom: 10vh;
 		}
 	}
 }

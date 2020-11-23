@@ -20,28 +20,30 @@ router.use('/', deleteRouter);
 
 
 // Homepage - All items
-router.get('/', function(req, res, next) {
-  const messages = {
+router.get('/', async function(req, res, next) {
+  const data = {
     errors: req.session.errors,
     success: req.session.success
   };
 
+  let search = req.query.search;
+  let category = req.query.category;
+
+  if (search) {
+    data.search = `You searched for \'${search}\':`;
+  }
+
+  // Get items from database
+  try {
+    data.items = await Item.find({title: new RegExp(search, 'i'), category: new RegExp(category, 'i'), show: true});
+  } catch (err) {
+    return res.json(err);
+  }
+
   req.session.errors = null;
   req.session.success = null;
 
-  res.render('index', { params: JSON.stringify(messages).replace(/<\//g, "<\\/") });
-});
-
-
-
-// Get all items
-router.get('/items', async function(req, res, next) {
-  try {
-    const items = await Item.find({show: true});
-    res.json(items);
-  } catch (err) {
-    res.json(JSON.stringify(err.message, Object.getOwnPropertyNames(err)));
-  }
+  res.render('index', { params: JSON.stringify(data).replace(/<\//g, "<\\/") });
 });
 
 
