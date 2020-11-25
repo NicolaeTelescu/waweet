@@ -36,7 +36,11 @@ npm start
 Now you can enter `localhost:3000` and your application should be running. Items are duplicated for showing more explicitly the pagination.
 <br/><br/>
 
-If you are a developer and you want to modify files from 'src' folder, you should start the server with `npm run-script startDev`. In this way your modifications will be saved in 'public' folder.
+If you are a developer and you want to modify files from 'src' folder, you should start the server with:
+```
+npm run-script startDev
+```
+In this way your modifications will be saved in 'public' folder.
 <br/><br/><br/>
 
 ## Next features/technologies to implement:
