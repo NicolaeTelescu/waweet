@@ -8,7 +8,15 @@ Waweet is a web app where users review food. Here you can discover new food that
 <br/><br/>
 
 ## First use:
-For first use you have to seed the database like so:
+Install the dependencies:
+```
+npm install
+```
+<br/>
+Rename '.env_example' to 'env' and config your DB.
+<br/><br/>
+
+After this, seed the database like so:
 ```
 npm run-script seedDB
 ```
@@ -21,7 +29,7 @@ After seeing the message \"DB has been filled with success\" you can close the c
 npm start
 ```
 
-Now you can enter \"localhost:3000\" and your application should be running.
+Now you can enter \"localhost:3000\" and your application should be running. Items are duplicated for showing more explicitly the pagination.
 <br/><br/><br/>
 
 ## Next features/technologies to implement:
