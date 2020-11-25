@@ -5,7 +5,7 @@ import { Footer } from './structure/layout/Footer.js';
 import { Message } from './structure/layout/Message.js';
 import { HomePage } from './structure/HomePage.js';
 import { AllItemPages } from './structure/item/_All.js';
-import { getRating } from './redux/reducers/index.js';
+import { allReducers } from './redux/reducers/index.js';
 
 var Provider = ReactRedux.Provider;
 
@@ -30,7 +30,7 @@ function App(props) {
 }
 
 // Create store
-var store = Redux.createStore(getRating);
+var store = Redux.createStore(allReducers);
 
 var domContainer = document.querySelector('#react_container');
 ReactDOM.render(React.createElement(

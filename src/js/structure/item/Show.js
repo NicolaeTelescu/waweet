@@ -9,8 +9,8 @@ export function ShowItemPage(props) {
 	const item = params[0];
 	const dispatch = useDispatch()(setRating(item.rating));
 	
-	const textForRating = useSelector(state => state.text);
-	const colorForRating = useSelector(state => state.color);
+	const textForRating = useSelector(state => state.rating.text);
+	const colorForRating = useSelector(state => state.rating.color);
 	const ratingModified = Math.floor(item.rating / 10) + ',' + (item.rating % 10);
 
 	const myStyle = {

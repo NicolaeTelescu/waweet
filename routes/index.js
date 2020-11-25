@@ -35,9 +35,16 @@ router.get('/', async function(req, res, next) {
 
   // Get items from database
   try {
-    data.items = await Item.find({title: new RegExp(search, 'i'), category: new RegExp(category, 'i'), show: true});
+
+    const filter = {
+      title: new RegExp(search, 'i'),
+      category: new RegExp(category, 'i'),
+      show: true
+    };
+
+    data.items = await Item.find(filter);
   } catch (err) {
-    return res.json(err);
+    return res.json(JSON.stringify(err.message, Object.getOwnPropertyNames(err)));
   }
 
   req.session.errors = null;

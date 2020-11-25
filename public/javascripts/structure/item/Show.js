@@ -10,10 +10,10 @@ export function ShowItemPage(props) {
 	var dispatch = useDispatch()(setRating(item.rating));
 
 	var textForRating = useSelector(function (state) {
-		return state.text;
+		return state.rating.text;
 	});
 	var colorForRating = useSelector(function (state) {
-		return state.color;
+		return state.rating.color;
 	});
 	var ratingModified = Math.floor(item.rating / 10) + ',' + item.rating % 10;
 

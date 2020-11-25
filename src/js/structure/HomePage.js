@@ -2,28 +2,22 @@
 
 import {SearchingBar} from './components/SearchingBar.js';
 import {Item} from './components/Home_Item.js';
+import {Pagination} from './layout/Pagination.js';
 
 const useState = React.useState;
 const useEffect = React.useEffect;
+const useSelector = ReactRedux.useSelector;
 
-export class HomePage extends React.Component {
-	constructor(props) {
-		super(props);
-		
-		this.state = { };
-	}
-	
-	render() {
-		return (		
-			<div className="home__mainContent">
-				
-				<Title />
-				<SearchingBar />
-				<Options />
-				
-			</div>
-		);
-	}
+export function HomePage(props) {
+	return (
+		<div className="home__mainContent">
+			
+			<Title />
+			<SearchingBar />
+			<Options />
+			
+		</div>
+	);
 }
 
 function Title(props) {
@@ -37,20 +31,30 @@ function Title(props) {
 function Options(props) {
 	const [items, setItems] = useState([]);
 
+	const useDispatch = ReactRedux.useDispatch();
+	const page = useSelector(state => state.pagination.page);
+	const limit = useSelector(state => state.pagination.limit);
 
 	useEffect(() => {
 		const data = params.items.concat(params.items);
-		
-		setItems(data.map((el, index) => {
-			return <Item key={index} props={el} />
-		}));
-	}, []);
+	
+		const itemsToShow = data
+			.filter((el, index) => {
+				if (index >= limit * (page - 1) && index < limit * page)
+					return true;
+			})
+			.map((el, index) => (
+				<Item key={index} props={el} />
+			));
+		setItems(itemsToShow);	
+	}, [page]);
 	
 
 	return (
 		<div className="home_options">
 			<SearchMessage />
 			{items}
+			<Pagination useDispatch={useDispatch} />
 		</div>
 	);
 }

@@ -27,10 +27,10 @@ function ItemRatingTriangle(props) {
 	var imgDimension = "55vh";
 
 	var rating = useSelector(function (state) {
-		return state.rating;
+		return state.rating.rating;
 	});
 	var colorForRating = useSelector(function (state) {
-		return state.color;
+		return state.rating.color;
 	});
 	var ratingModified = Math.floor(rating / 10) + ',' + rating % 10;
 

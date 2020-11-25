@@ -128,13 +128,13 @@ function Rating(_ref4) {
 	var useDispatch = ReactRedux.useDispatch();
 
 	var rating = useSelector(function (state) {
-		return state.rating;
+		return state.rating.rating;
 	});
 	var textForRating = useSelector(function (state) {
-		return state.text;
+		return state.rating.text;
 	});
 	var colorForRating = useSelector(function (state) {
-		return state.color;
+		return state.rating.color;
 	});
 
 	var myStyle = {

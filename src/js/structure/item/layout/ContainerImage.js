@@ -22,8 +22,8 @@ function ItemRatingTriangle(props) {
 
 	const imgDimension = "55vh";
 
-	const rating = useSelector(state => state.rating);
-	const colorForRating = useSelector(state => state.color);
+	const rating = useSelector(state => state.rating.rating);
+	const colorForRating = useSelector(state => state.rating.color);
 	const ratingModified = Math.floor(rating / 10) + ',' + rating % 10;
 
 	const triangleStyle = {

@@ -76,9 +76,9 @@ function Rating({}) {
 
 	const useDispatch = ReactRedux.useDispatch();
 
-	const rating = useSelector(state => state.rating);
-	const textForRating = useSelector(state => state.text);
-	const colorForRating = useSelector(state => state.color);
+	const rating = useSelector(state => state.rating.rating);
+	const textForRating = useSelector(state => state.rating.text);
+	const colorForRating = useSelector(state => state.rating.color);
 
 	const myStyle = {
 		backgroundColor: colorForRating

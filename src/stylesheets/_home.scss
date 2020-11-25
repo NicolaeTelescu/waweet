@@ -132,6 +132,11 @@
 			margin-bottom: 10vh;
 		}
 	}
+
+	&__pagination-nav {
+		@include flexCenter;
+		margin-top: 5vh;
+	}
 }
 
 
