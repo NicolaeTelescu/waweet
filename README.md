@@ -13,8 +13,12 @@ Install the dependencies:
 npm install
 ```
 <br/>
-Rename '.env_example' to 'env' and config your DB.
-<br/><br/>
+Rename '.env_example' to '.env' and config your DB.
+<br/>
+
+> Note: If you are on Windows and it displays the error "You must type a file name" you can rename the file '.env.' and the file will be renamed correctly.
+
+<br/>
 
 After this, seed the database like so:
 ```
