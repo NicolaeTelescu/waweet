@@ -85,7 +85,7 @@ router.post('/item/edit/:itemSlug',
 				});
 			}
 			
-			req.session.success = `\'${req.body.title}\' has been edited with success`;
+			req.session.success = `\'${req.body.title}\' has been edited successfully`;
 			req.session.errors = false;
 			res.redirect('/');
 

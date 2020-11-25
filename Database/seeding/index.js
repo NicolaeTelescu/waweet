@@ -19,7 +19,7 @@ const collections = seeder.readCollectionsFromPath(
 seeder
 	.import(collections)
 	.then(() => {
-		console.log('DB has been filled with success');
+		console.log('DB has been filled successfully!');
 	})
 	.catch(err => {
 		console.log('Error when trying to seed the DB', err);

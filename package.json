@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "start": "run-p startMongoDB startNode",
-    "startNode": "node ./bin/www",
+    "startNode": "node app.js",
     "startDev": "run-p startSASS startReact startMongoDB startNodemon",
-    "startNodemon": "nodemon ./bin/www",
+    "startNodemon": "nodemon app.js",
     "startReact": "npx babel --watch src/js --out-dir ./public/javascripts --presets react-app/prod",
     "startMongoDB": "mongod --dbpath=\"Database/Database/\" --logpath=\"Database/Database/logs/logs.txt\"",
     "startSASS": "node-sass -q --watch --output-style compressed src/stylesheets/main.scss public/stylesheets/style.css",

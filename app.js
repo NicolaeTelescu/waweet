@@ -12,7 +12,9 @@ require('dotenv/config');
 
 var indexRouter = require('./routes/index');
 
+var port = 3000;
 var app = express();
+app.listen(port);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -67,5 +69,3 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-module.exports = app;

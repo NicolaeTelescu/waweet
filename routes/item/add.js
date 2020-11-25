@@ -84,7 +84,7 @@ router.post('/item/add',
 			const savedItem = await item.save();
 			
 			
-			req.session.success = `\'${req.body.title}\' has been added with success`;
+			req.session.success = `\'${req.body.title}\' has been added successfully`;
 			req.session.errors = false;
 			res.redirect('/');
 		} catch (err) {

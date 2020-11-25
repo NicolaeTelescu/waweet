@@ -20,7 +20,7 @@ router.post('/item/delete/:itemSlug', async function(req, res, next) {
 			itemFilter, { $set: {show: false} }
 		);
 		
-		req.session.success = `\'${item.title}\' has been deleted with success`;
+		req.session.success = `\'${item.title}\' has been deleted successfully`;
 		req.session.errors = false;
 		res.redirect('/');
 
