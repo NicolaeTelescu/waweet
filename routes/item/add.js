@@ -68,7 +68,7 @@ router.post('/item/add',
 					return res.status(500).send(err);
 		
 				// Convert the image to a small dimension for homepage
-				helpers.jimp([{src: imageName, dest: imageNameSmall}], 200, 90);
+				helpers.jimp([{src: imageName, dest: imageNameSmall}], 200, 80);
 			});
 			
 	
