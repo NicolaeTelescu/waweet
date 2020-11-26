@@ -2,6 +2,32 @@
 Waweet is a web app where users review food. Here you can discover new food that you like or add some that perhaps no one has ever seen.
 <br/><br/><br/>
 
+## Presentation
+
+### Homepage
+
+<br/>
+
+![Homepage](./public/images/presentation/Homepage.png?raw=true)
+
+<br/>
+
+### Search
+
+<br/>
+
+![Search](./public/images/presentation/Search.png?raw=true)
+
+<br/>
+
+### Show an element
+
+<br/>
+
+![Show an element](./public/images/presentation/Show%20element.png?raw=true)
+
+<br/><br/>
+
 ## Requirements
 - [MongoDB](https://www.mongodb.com/) v4.4 - Database
 - [Node.js](https://nodejs.org/en/) v12.18.3 - Web Server
