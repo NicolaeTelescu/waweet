@@ -1,29 +1,32 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var logger = require('morgan');
-var mongoose = require('mongoose');
-var fileUpload = require('express-fileupload');
-var cors = require('cors');
+const cors = require('cors');
+const path = require('path');
+const express = require('express');
+const createError = require('http-errors');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const mongoose = require('mongoose');
+const logger = require('morgan');
+const fileUpload = require('express-fileupload');
+const favicon = require('serve-favicon');
 require('dotenv/config');
 
 
-var indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
 
-var port = 3000;
-var app = express();
+
+const port = 3000;
+const app = express();
 app.listen(port);
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use(cors());
-// app.use(logger('dev')); -> For logs
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(favicon(path.join(__dirname, 'public', 'images/favicon.ico')));
 app.use(cookieParser());
 app.use(session({
   secret: 'keyboard penguin',
@@ -56,8 +59,9 @@ mongoose.connect(
 
 // Every wrong route redirect to homepage (for now)
 app.use(function(req, res, next) {
-  res.redirect(301, '/product');
+  res.redirect(404, '/product');
 });
+
 
 // error handler
 app.use(function(err, req, res, next) {
