@@ -26,40 +26,41 @@ router.get('/', async function(req, res, next) {
     success: req.session.success
   };
 
-  let search = req.query.search;
-  let category = req.query.category;
+  req.session.errors = null;
+  req.session.success = null;
 
-  if (search) {
-    data.search = `You searched for \'${search}\':`;
-  }
+  return res.render('index', { params: JSON.stringify(data).replace(/<\//g, "<\\/") });
+});
 
-  // Get items from database
+
+
+// Get all items
+router.get('/items', async function(req, res, next) {
+  
+  let { search, category, page, limit } = req.query;
+
   try {
-
     const filter = {
       title: new RegExp(search, 'i'),
       category: new RegExp(category, 'i'),
       show: true
     };
 
-    data.items = await Item.find(filter);
+    page = parseInt(page);
+    limit = parseInt(limit);
+
+    const items = await Item.find(filter).limit(limit).skip((page - 1) * limit);
+    const count = await Item.countDocuments(filter);
+
+    res.json({
+      items,
+      totalElements: count
+    });
   } catch (err) {
-    return res.json(JSON.stringify(err.message, Object.getOwnPropertyNames(err)));
+    console.error(err.message);
   }
-
-  req.session.errors = null;
-  req.session.success = null;
-
-  res.render('index', { params: JSON.stringify(data).replace(/<\//g, "<\\/") });
 });
 
-
-
-// Example for sending data to React
-router.get('/product', function(req, res, next) {
-  const data = { title: 'I am very hungry' };
-  res.render('index', { params: JSON.stringify(data).replace(/<\//g, "<\\/")}); // against injection
-});
 
 
 

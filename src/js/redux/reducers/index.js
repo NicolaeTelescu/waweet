@@ -1,7 +1,7 @@
-import ratingReducer from './rating.js';
-import paginationReducer from './pagination.js';
+import ratingReducer from './ratingReducer.js';
+import searchReducer from './searchReducer.js';
 
 export const allReducers = Redux.combineReducers({
 	rating: ratingReducer,
-	pagination: paginationReducer
+	search: searchReducer
 });

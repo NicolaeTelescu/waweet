@@ -1,36 +1,18 @@
 'use strict';
 
+import {setSearchField} from './../../redux/actions/searchActions.js';
+
 export function Header(props) {
 	
-	const names = ['Breakfast', 'Lunch', 'Dinner', 'Drinks', 'Snack'];
-	const buttons = names.map((el, index) => (
-		<CategoryButton name={el} key={index} />
-	));
-
-
 	return (		
-		<form className="header" id="headerForm">
-			{buttons}
+		<div className="header">
 			<AllProductsButton />
-			<input type="text" name="category" id="headerCategory" hidden />
-		</form>
+		</div>
 	);
 }
 
-function CategoryButton(props) {
-
-	const handleClick = (event) => {
-		document.getElementById("headerCategory").value = props.name.toLowerCase();
-		document.getElementById("headerForm").submit();
-	}
-
+function AllProductsButton({onClick}) {
 	return (
-		<a onClick={handleClick}><button type="button" className="btn btn-warning header__categoryButton">{props.name}</button></a>
-	);
-}
-
-function AllProductsButton(props) {
-	return (
-		<a href='/'><button type="button" className="btn btn-warning header__categoryButton">All products</button></a>
+		<button type="button" className="btn btn-warning header__categoryButton" onClick={() => onClick('')}><a href='/'>All products</a></button>
 	);
 }

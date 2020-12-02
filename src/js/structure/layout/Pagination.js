@@ -1,6 +1,6 @@
 'use strict';
 
-import {setPaginateDetails} from './../../redux/actions/index.js';
+import {setSearchField} from './../../redux/actions/searchActions.js';
 
 const useSelector = ReactRedux.useSelector;
 
@@ -8,9 +8,10 @@ export function Pagination({useDispatch}) {
 
 	let labels = [];
 
-	const page = useSelector(state => state.pagination.page);
-	const limit = useSelector(state => state.pagination.limit);
-	const totalPages = Math.ceil((params.items.length * 2) / limit);
+	const page = useSelector(state => state.search.page);
+	const limit = useSelector(state => state.search.limit);
+	const totalElements = useSelector(state => state.search.totalElements);
+	const totalPages = Math.ceil(totalElements / limit);
 
 	if (totalPages == 0) return null;
 	
@@ -41,7 +42,7 @@ export function Pagination({useDispatch}) {
 			top: 0,
 			behavior: 'smooth'
 		});
-		useDispatch(setPaginateDetails({page: page, limit: 5}));
+		useDispatch(setSearchField({type: 'PAGE', payload: page}));
 	};
 
 	return (

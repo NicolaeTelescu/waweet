@@ -1,8 +1,8 @@
 'use strict';
 
 export function Message(props) {
-	var message = '';
-	var className = '';
+	let message = '';
+	let className = '';
 
 	if (params.success) {
 		message = params.success;

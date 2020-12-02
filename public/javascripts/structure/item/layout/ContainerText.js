@@ -4,7 +4,7 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
 
-import { setRating } from '../../../redux/actions/index.js';
+import { setRating } from '../../../redux/actions/ratingActions.js';
 
 var useSelector = ReactRedux.useSelector;
 var useState = React.useState;

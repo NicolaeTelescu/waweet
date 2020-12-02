@@ -1,6 +1,6 @@
 'use strict';
 
-import { setRating } from './../../redux/actions/index.js';
+import { setRating } from './../../redux/actions/ratingActions.js';
 
 var useSelector = ReactRedux.useSelector;
 var useDispatch = ReactRedux.useDispatch;

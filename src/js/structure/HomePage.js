@@ -3,6 +3,7 @@
 import {SearchingBar} from './components/SearchingBar.js';
 import {Item} from './components/Home_Item.js';
 import {Pagination} from './layout/Pagination.js';
+import {setSearchField} from './../redux/actions/searchActions.js';
 
 const useState = React.useState;
 const useEffect = React.useEffect;
@@ -32,22 +33,27 @@ function Options(props) {
 	const [items, setItems] = useState([]);
 
 	const useDispatch = ReactRedux.useDispatch();
-	const page = useSelector(state => state.pagination.page);
-	const limit = useSelector(state => state.pagination.limit);
+	const page = useSelector(state => state.search.page);
+	const limit = useSelector(state => state.search.limit);
+	const search = useSelector(state => state.search.search);
+	const category = useSelector(state => state.search.category);
 
 	useEffect(() => {
-		const data = params.items.concat(params.items);
-	
-		const itemsToShow = data
-			.filter((el, index) => {
-				if (index >= limit * (page - 1) && index < limit * page)
-					return true;
-			})
-			.map((el, index) => (
-				<Item key={index} props={el} />
-			));
-		setItems(itemsToShow);	
-	}, [page]);
+
+		fetch(`http://www.localhost:3000/items?search=${search}&category=${category}&page=${page}&limit=${limit}`)
+			.then(response => response.json())
+			.then(data => {
+
+				useDispatch(setSearchField({type: 'TOTAL_ELEMENTS', payload: data.totalElements}));
+
+				const itemsToShow = data.items
+					.map((el, index) => (
+						<Item key={index} props={el} />
+					));
+				setItems(itemsToShow);
+			});
+			
+	}, [search, category, page]);
 	
 
 	return (
@@ -60,12 +66,24 @@ function Options(props) {
 }
 
 function SearchMessage(props) {
+
+	const search = useSelector(state => state.search.search);
+	const totalElements = useSelector(state => state.search.totalElements);
 	
-	if (!params.search) return null;
+	let searchMessage = `You searched for '${search}':`;
+	let noElementFound = null;
+
+	if (!search) searchMessage = null;
+	if (!totalElements) noElementFound = 'No element found!';
 
 	return (
-		<div className="home__item__search-message">
-			{params.search}
+		<div>
+			<div className="home__item__search-message">
+				{searchMessage}
+			</div>
+			<div>
+				{noElementFound}
+			</div>
 		</div>
 	);
 }
