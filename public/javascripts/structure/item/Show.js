@@ -6,6 +6,7 @@ var useSelector = ReactRedux.useSelector;
 var useDispatch = ReactRedux.useDispatch;
 
 export function ShowItemPage(props) {
+
 	var item = params[0];
 	var dispatch = useDispatch()(setRating(item.rating));
 
@@ -36,10 +37,11 @@ export function ShowItemPage(props) {
 			React.createElement(
 				'div',
 				{ style: { display: "flex", flexGrow: "1" } },
+				React.createElement('div', { className: 'itemPage__details-img-border' }),
 				React.createElement('img', { className: 'itemPage__details-img', src: "/images/eating/" + item.ID + ".jpg" }),
 				React.createElement(
 					'div',
-					{ className: 'itemPage__rating    itemPage__border-animation' },
+					{ className: 'itemPage__rating    shadow' },
 					React.createElement(
 						'div',
 						{ className: 'itemPage__rating-triangle', style: triangleStyle },

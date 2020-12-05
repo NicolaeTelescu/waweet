@@ -60,7 +60,7 @@ class FooterEatingTime extends React.Component {
 		
 		
 		return (
-			<div style={{fontSize: "24px"}}> {dayPeriod} Time </div>
+			<div style={{fontSize: "20px"}}> {dayPeriod} Time </div>
 		);
 		
 	}

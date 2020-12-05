@@ -5,7 +5,7 @@ const Category = require('../../Database/models/Category');
 
 
 // Get an item
-router.get('/item/show/:itemSlug', async function(req, res, next) {
+router.get('/items/show/:itemSlug', async function(req, res, next) {
 	try {
 		const item = await Item.findOne({slug: req.params.itemSlug, show: true});
 		if (item === null) 

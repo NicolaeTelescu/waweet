@@ -46,7 +46,7 @@ export function Pagination({useDispatch}) {
 	};
 
 	return (
-		<nav className="home__pagination-nav">
+		<nav className="showItems__pagination-nav">
 			<ul className="pagination">
 				<ChangePageButton direction='begin' inactivePage={firstPage} nextPage={1} goToPage={goToPage} />
 				<ChangePageButton direction='left' inactivePage={firstPage} nextPage={page - 1} goToPage={goToPage} />

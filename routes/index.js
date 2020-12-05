@@ -19,8 +19,15 @@ router.use('/', deleteRouter);
 
 
 
-// Homepage - All items
+// Homepage
 router.get('/', async function(req, res, next) {
+  return res.render('index', { params: JSON.stringify({}).replace(/<\//g, "<\\/") });
+});
+
+
+
+// Show items page
+router.get('/items', async function(req, res, next) {
   const data = {
     errors: req.session.errors,
     success: req.session.success
@@ -35,7 +42,7 @@ router.get('/', async function(req, res, next) {
 
 
 // Get all items
-router.get('/items', async function(req, res, next) {
+router.get('/items/all', async function(req, res, next) {
   
   let { search, category, page, limit } = req.query;
 

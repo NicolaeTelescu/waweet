@@ -23,7 +23,7 @@ export function Message(props) {
 	}, 5000);
 	
 	return (
-		<div className={"home__message alert alert-" + className + " fade show"} role="alert">
+		<div className={"showItems__message alert alert-" + className + " fade show"} role="alert">
 				
 			<span>{message}</span>
 			<button type="button" className="close" data-dismiss="alert" style={{marginLeft: "20px"}} aria-label="Close">

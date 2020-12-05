@@ -57,7 +57,7 @@ export function Pagination(_ref) {
 
 	return React.createElement(
 		'nav',
-		{ className: 'home__pagination-nav' },
+		{ className: 'showItems__pagination-nav' },
 		React.createElement(
 			'ul',
 			{ className: 'pagination' },

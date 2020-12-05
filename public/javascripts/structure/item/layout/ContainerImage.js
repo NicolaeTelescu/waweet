@@ -9,12 +9,13 @@ export function ContainerImage(_ref) {
 	return React.createElement(
 		"div",
 		{ className: "itemPage__container-img" },
+		React.createElement("div", { className: "itemPage__details-img-border" }),
 		React.createElement("img", { className: "itemPage__details-img", src: params.image ? params.image : null }),
 		React.createElement(AddImageButton, { errors: errors }),
 		React.createElement(ImageError, { errors: errors }),
 		React.createElement(
 			"div",
-			{ className: "itemPage__rating    itemPage__border-animation" },
+			{ className: "itemPage__rating    shadow" },
 			React.createElement(ItemRatingTriangle, null),
 			React.createElement("label", { className: "itemPage__label-image", htmlFor: "image" })
 		),

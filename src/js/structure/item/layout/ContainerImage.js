@@ -6,10 +6,11 @@ export function ContainerImage({errors}) {
 
 	return (
 		<div className="itemPage__container-img">
+			<div className="itemPage__details-img-border"></div>
 			<img className="itemPage__details-img" src={params.image ? params.image : null} />
 			<AddImageButton errors={errors} />
 			<ImageError errors={errors} />
-			<div className="itemPage__rating    itemPage__border-animation">
+			<div className="itemPage__rating    shadow">
 				<ItemRatingTriangle />
 				<label className="itemPage__label-image" htmlFor="image"></label>
 			</div>

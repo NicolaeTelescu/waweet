@@ -42,6 +42,7 @@
 		left: $width / 2;
 		border-bottom: $height / 4 solid transparent;
 		border-left: $width / 4 solid transparent;
+		border-radius: 0px 0.5em 0px 0px;
 	}
 
 	&-number {

@@ -1,9 +1,7 @@
 'use strict';
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-import { SearchingBar } from './components/SearchingBar.js';
-import { Item } from './components/Home_Item.js';
+import { SearchingBar } from './layout/SearchingBar.js';
+import { Item } from './item/layout/SearchItem.js';
 import { Pagination } from './layout/Pagination.js';
 import { setSearchField } from './../redux/actions/searchActions.js';
 
@@ -12,26 +10,26 @@ var useEffect = React.useEffect;
 var useSelector = ReactRedux.useSelector;
 
 export function HomePage(props) {
+
 	return React.createElement(
 		'div',
-		{ className: 'home__mainContent' },
+		{ className: 'home__container' },
 		React.createElement(Title, null),
-		React.createElement(SearchingBar, null),
-		React.createElement(Options, null)
+		React.createElement(Categories, null)
 	);
 }
 
 function Title(props) {
 	return React.createElement(
 		'div',
-		{ className: 'title' },
+		{ className: 'home__title' },
 		React.createElement(
 			'h1',
 			null,
 			'What are we eating ',
 			React.createElement(
 				'span',
-				{ className: 'home__todayTitle', style: { color: "red" } },
+				{ className: 'showItems__todayTitle', style: { color: "red" } },
 				'today'
 			),
 			'?'
@@ -39,77 +37,30 @@ function Title(props) {
 	);
 }
 
-function Options(props) {
-	var _useState = useState([]),
-	    _useState2 = _slicedToArray(_useState, 2),
-	    items = _useState2[0],
-	    setItems = _useState2[1];
+function Categories(props) {
 
-	var useDispatch = ReactRedux.useDispatch();
-	var page = useSelector(function (state) {
-		return state.search.page;
+	var goTo = function goTo(href) {
+		window.location.href = href;
+	};
+
+	var categories = ['Breakfast', 'Lunch', 'Snack', 'Dinner'].map(function (el, index) {
+		return React.createElement(
+			'div',
+			{ className: 'home__category    shadow-lg', key: index, onClick: function onClick() {
+					return goTo('/items?category=' + el);
+				} },
+			React.createElement(
+				'div',
+				{ className: 'home__category-label', style: { bottom: "5px", left: "6px" } },
+				el
+			),
+			React.createElement('img', { className: 'home__category-img', style: { objectPosition: index === 2 ? 'bottom' : '' }, src: '/images/structure/' + el + '.jpg' })
+		);
 	});
-	var limit = useSelector(function (state) {
-		return state.search.limit;
-	});
-	var search = useSelector(function (state) {
-		return state.search.search;
-	});
-	var category = useSelector(function (state) {
-		return state.search.category;
-	});
-
-	useEffect(function () {
-
-		fetch('http://www.localhost:3000/items?search=' + search + '&category=' + category + '&page=' + page + '&limit=' + limit).then(function (response) {
-			return response.json();
-		}).then(function (data) {
-
-			useDispatch(setSearchField({ type: 'TOTAL_ELEMENTS', payload: data.totalElements }));
-
-			var itemsToShow = data.items.map(function (el, index) {
-				return React.createElement(Item, { key: index, props: el });
-			});
-			setItems(itemsToShow);
-		});
-	}, [search, category, page]);
 
 	return React.createElement(
 		'div',
-		{ className: 'home_options' },
-		React.createElement(SearchMessage, null),
-		items,
-		React.createElement(Pagination, { useDispatch: useDispatch })
-	);
-}
-
-function SearchMessage(props) {
-
-	var search = useSelector(function (state) {
-		return state.search.search;
-	});
-	var totalElements = useSelector(function (state) {
-		return state.search.totalElements;
-	});
-
-	var searchMessage = 'You searched for \'' + search + '\':';
-	var noElementFound = null;
-
-	if (!search) searchMessage = null;
-	if (!totalElements) noElementFound = 'No element found!';
-
-	return React.createElement(
-		'div',
-		null,
-		React.createElement(
-			'div',
-			{ className: 'home__item__search-message' },
-			searchMessage
-		),
-		React.createElement(
-			'div',
-			null,
-			noElementFound
-		)
+		{ className: 'home__categories' },
+		categories
 	);
 }

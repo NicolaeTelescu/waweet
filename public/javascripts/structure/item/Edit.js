@@ -26,7 +26,7 @@ export function EditItemPage(props) {
 
 	return React.createElement(
 		'form',
-		{ className: 'itemPage__container', id: 'itemForm', action: "/item/edit/" + params.form.slug, method: 'post', encType: 'multipart/form-data', runat: 'server' },
+		{ className: 'itemPage__container', id: 'itemForm', action: "/items/edit/" + params.form.slug, method: 'post', encType: 'multipart/form-data', runat: 'server' },
 		React.createElement(
 			'div',
 			{ className: 'itemPage__details' },

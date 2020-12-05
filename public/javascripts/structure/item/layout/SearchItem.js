@@ -8,6 +8,7 @@ export function Item(_ref) {
 	    rating = props.rating,
 	    slug = props.slug;
 
+
 	return React.createElement(
 		"div",
 		{ className: "showItems__item" },

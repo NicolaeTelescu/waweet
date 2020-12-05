@@ -6,7 +6,7 @@ const Category = require('../../Database/models/Category');
 
 
 // Delete an item
-router.post('/item/delete/:itemSlug', async function(req, res, next) {
+router.post('/items/delete/:itemSlug', async function(req, res, next) {
 	try {
 
 		const itemFilter = {
@@ -22,7 +22,7 @@ router.post('/item/delete/:itemSlug', async function(req, res, next) {
 		
 		req.session.success = `\'${item.title}\' has been deleted successfully`;
 		req.session.errors = false;
-		res.redirect('/');
+		res.redirect('/items');
 
 	} catch (err) {
 	  res.json(JSON.stringify(err.message, Object.getOwnPropertyNames(err)));

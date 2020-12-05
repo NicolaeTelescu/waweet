@@ -9,7 +9,7 @@ const helpers = require('../../src/helpers/index');
 
 
 // Page for edit a new item
-router.get('/item/edit/:itemSlug', async function(req, res, next) {
+router.get('/items/edit/:itemSlug', async function(req, res, next) {
 	try {
 		const categories = await Category.find();
 		const item = await Item.findOne({slug: req.params.itemSlug, show: true});
@@ -31,7 +31,7 @@ router.get('/item/edit/:itemSlug', async function(req, res, next) {
   
   
 // Update a new item
-router.post('/item/edit/:itemSlug',
+router.post('/items/edit/:itemSlug',
 	itemEditValidation,
 	async function(req, res, next) {
 		
@@ -87,7 +87,7 @@ router.post('/item/edit/:itemSlug',
 			
 			req.session.success = `\'${req.body.title}\' has been edited successfully`;
 			req.session.errors = false;
-			res.redirect('/');
+			res.redirect('/items');
 
 		} catch (err) {
 			res.json(JSON.stringify(err.message, Object.getOwnPropertyNames(err)));

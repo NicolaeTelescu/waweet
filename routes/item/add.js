@@ -9,7 +9,7 @@ const helpers = require('../../src/helpers/index');
 
 
 // Page for adding an item
-router.get('/item/add', async function(req, res, next) {
+router.get('/items/add', async function(req, res, next) {
 	try {
 		const categories = await Category.find();
 
@@ -30,7 +30,7 @@ router.get('/item/add', async function(req, res, next) {
   
   
 // Add a new item
-router.post('/item/add',
+router.post('/items/add',
 	itemAddValidation,
 	async function(req, res, next) {
   
@@ -86,7 +86,7 @@ router.post('/item/add',
 			
 			req.session.success = `\'${req.body.title}\' has been added successfully`;
 			req.session.errors = false;
-			res.redirect('/');
+			res.redirect('/items');
 		} catch (err) {
 			res.json(JSON.stringify(err.message, Object.getOwnPropertyNames(err)));
 		}

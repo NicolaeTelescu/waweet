@@ -6,6 +6,7 @@ const useSelector = ReactRedux.useSelector;
 const useDispatch = ReactRedux.useDispatch;
 
 export function ShowItemPage(props) {
+
 	const item = params[0];
 	const dispatch = useDispatch()(setRating(item.rating));
 	
@@ -27,8 +28,9 @@ export function ShowItemPage(props) {
 		<div className="itemPage__container">
 			<div className="itemPage__details">
 				<div style={{display: "flex", flexGrow: "1"}}>
+					<div className="itemPage__details-img-border"></div>
 					<img className="itemPage__details-img" src={"/images/eating/" + item.ID + ".jpg"} />
-					<div className="itemPage__rating    itemPage__border-animation">
+					<div className="itemPage__rating    shadow">
 						<div className="itemPage__rating-triangle" style={triangleStyle}>
 							<div className="itemPage__rating-number">{ratingModified}</div>
 						</div>

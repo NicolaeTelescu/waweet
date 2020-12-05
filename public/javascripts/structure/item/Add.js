@@ -27,7 +27,7 @@ export function AddItemPage(props) {
 
 	return React.createElement(
 		'form',
-		{ className: 'itemPage__container', id: 'itemForm', action: '/item/add', method: 'post', encType: 'multipart/form-data', runat: 'server' },
+		{ className: 'itemPage__container', id: 'itemForm', action: '/items/add', method: 'post', encType: 'multipart/form-data', runat: 'server' },
 		React.createElement(
 			'div',
 			{ className: 'itemPage__details' },

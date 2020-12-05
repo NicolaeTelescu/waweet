@@ -1,4 +1,4 @@
-.home {
+.showItems {
 
 	$item-img-dimension: 100px;
 
@@ -17,7 +17,6 @@
 	
 	&__mainContent {
 		@include displayData;
-		margin-bottom: 10vh;
 	}
 
 	&__todayTitle {
@@ -52,6 +51,7 @@
 		position: absolute;
 		top: 12%;
 		right: 2%;
+		z-index: 1;
 	}
 
 	&__item {
@@ -69,13 +69,20 @@
 			}
 		}
 
-		&__border-animation {
+		&__border-animation { // deprecated
 			@include borderAnimation($item-img-dimension, rgba(0, 123, 255, 0.25));
 		}
 
 		&__img {
 			width: $item-img-dimension;
 			height: $item-img-dimension;
+			border-radius: 0.5em;
+			
+			&-border {
+				@extend .showItems__item__img;
+				position: absolute;
+				border: 1px solid #ced4da;
+			}
 		}
 
 		&__linkTo {
@@ -87,15 +94,10 @@
 			flex-direction: row;
 			justify-content: space-between;
 			text-align: left;
-			box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-			transition: box-shadow 0.15s;
-			border-radius: 0.1rem;
 			margin-left: 5%;
 			flex-grow: 1;
-			
-			&:hover {
-				box-shadow: 0 0 0 0.4rem rgba(0, 123, 255, 0.25);
-			}
+			border: 1px solid #ced4da;
+			border-radius: 0.5rem;
 		}
 
 		&__details-text {
@@ -116,13 +118,40 @@
 
 		&__button {
 			@include button;
-			border: 1px solid #aaafb4;
+			border: 2px solid #aaafb4;
 			height: 30px;
 			width: 30px;
+
+			&:hover {
+				box-shadow: none;
+			}
+
+			&__edit {
+				@extend .showItems__item__button;
+				color: #f5aa78;
+				border-color: #f5aa78;
+
+				&:hover {
+					color: white;
+					background-color: #f5aa78;
+				}
+			}
+
+			&__delete {
+				@extend .showItems__item__button;
+				color: #f27373;
+				border-color: #f27373;
+
+				&:hover {
+					color: white;
+					background-color: #f27373;
+				}
+			}
 		}
 
 		&__rating {
 			@include itemRating($item-img-dimension, $item-img-dimension, inherit, -15px);
+			border-radius: 0.5em;
 		}
 
 		&__search-message {
@@ -135,8 +164,6 @@
 
 	&__pagination-nav {
 		@include flexCenter;
-		margin-top: 5vh;
+		margin-top: 10vh;
 	}
 }
-
-

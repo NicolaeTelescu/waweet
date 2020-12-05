@@ -24,7 +24,7 @@ export function Message(props) {
 
 	return React.createElement(
 		'div',
-		{ className: "home__message alert alert-" + className + " fade show", role: 'alert' },
+		{ className: "showItems__message alert alert-" + className + " fade show", role: 'alert' },
 		React.createElement(
 			'span',
 			null,

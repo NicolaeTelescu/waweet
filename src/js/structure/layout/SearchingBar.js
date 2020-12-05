@@ -32,9 +32,9 @@ export function SearchingBar(props) {
 	};
 
 	return (
-		<div className="home__searchingBar">
+		<div className="showItems__searchingBar">
 			<AddItemButton />
-			<div className="home__searchFields">
+			<div className="showItems__searchFields">
 				<input type="text" name="search" className="form-control col-3" placeholder="Search for something" value={searchBar.search} onChange={handleChange} onKeyDown={onKeyDown}></input>
 				<SearchingButton onClick={handleSubmit} />
 				<FilterButton onChange={handleChange} />
@@ -45,7 +45,7 @@ export function SearchingBar(props) {
 
 function SearchingButton({onClick}) {
 	return (
-		<div className="home__button" onClick={onClick}>
+		<div className="showItems__button" onClick={onClick}>
 			<svg width="2em" height="2em" viewBox="0 0 16 16" className="bi bi-search" fillRule="currentColor" xmlns="http://www.w3.org/2000/svg">
 				<path fillRule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
 				<path fillRule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
@@ -57,8 +57,8 @@ function SearchingButton({onClick}) {
 function FilterButton({onChange}) {
 
 	return (
-		<div className="home__button">
-			<a className="home__dropdownSVG" data-toggle="dropdown">
+		<div className="showItems__button">
+			<a className="showItems__dropdownSVG" data-toggle="dropdown">
 				<FilterButtonSVG />
 			</a>
 			<div className="dropdown-menu p-2">
@@ -96,7 +96,7 @@ function FilterButtonSVG(props) {
 
 function AddItemButton(props) {
 	return (
-		<a className="home__button" href="/item/add">
+		<a className="showItems__button" href="/items/add">
 			<svg width="2em" height="2em" viewBox="0 0 16 16" className="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 				<path fillRule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
 			</svg>

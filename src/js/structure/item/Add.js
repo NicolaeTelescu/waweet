@@ -21,7 +21,7 @@ export function AddItemPage(props) {
 	
 
 	return (
-		<form className="itemPage__container" id="itemForm" action="/item/add" method="post" encType="multipart/form-data" runat="server">
+		<form className="itemPage__container" id="itemForm" action="/items/add" method="post" encType="multipart/form-data" runat="server">
 			<div className="itemPage__details">
 				<ContainerImage errors={errors} />
 				<ContainerText errors={errors} />

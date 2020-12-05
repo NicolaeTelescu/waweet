@@ -85,7 +85,7 @@ var FooterEatingTime = function (_React$Component2) {
 
 			return React.createElement(
 				"div",
-				{ style: { fontSize: "24px" } },
+				{ style: { fontSize: "20px" } },
 				" ",
 				dayPeriod,
 				" Time "
