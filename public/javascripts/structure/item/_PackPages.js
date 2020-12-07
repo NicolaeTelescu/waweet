@@ -1,21 +1,37 @@
-import { ShowItemPage } from './Show.js';
-import { AddItemPage } from './Add.js';
-import { EditItemPage } from './Edit.js';
-import { ShowItemsPage } from './ShowAll.js';
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.PackItemPages = PackItemPages;
+
+var _Show = require("./Show.js");
+
+var _Add = require("./Add.js");
+
+var _Edit = require("./Edit.js");
+
+var _ShowAll = require("./ShowAll/ShowAll.js");
 
 var Switch = ReactRouterDOM.Switch;
 var Route = ReactRouterDOM.Route;
 
-export function PackItemPages(props) {
-	var _ReactRouterDOM$useRo = ReactRouterDOM.useRouteMatch(),
-	    path = _ReactRouterDOM$useRo.path;
+function PackItemPages(props) {
+  var _ReactRouterDOM$useRo = ReactRouterDOM.useRouteMatch(),
+      path = _ReactRouterDOM$useRo.path;
 
-	return React.createElement(
-		Switch,
-		null,
-		React.createElement(Route, { path: path + "/", exact: true, component: ShowItemsPage }),
-		React.createElement(Route, { path: path + "/add", component: AddItemPage }),
-		React.createElement(Route, { path: path + "/show/:itemID", component: ShowItemPage }),
-		React.createElement(Route, { path: path + "/edit/:itemID", component: EditItemPage })
-	);
+  return /*#__PURE__*/React.createElement(Switch, null, /*#__PURE__*/React.createElement(Route, {
+    path: path + "/",
+    exact: true,
+    component: _ShowAll.ShowItemsPage
+  }), /*#__PURE__*/React.createElement(Route, {
+    path: path + "/add",
+    component: _Add.AddItemPage
+  }), /*#__PURE__*/React.createElement(Route, {
+    path: path + "/show/:itemID",
+    component: _Show.ShowItemPage
+  }), /*#__PURE__*/React.createElement(Route, {
+    path: path + "/edit/:itemID",
+    component: _Edit.EditItemPage
+  }));
 }

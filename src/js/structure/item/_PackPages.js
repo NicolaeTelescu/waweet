@@ -1,7 +1,7 @@
 import {ShowItemPage} from './Show.js';
 import {AddItemPage} from './Add.js';
 import {EditItemPage} from './Edit.js';
-import {ShowItemsPage} from './ShowAll.js';
+import {ShowItemsPage} from './ShowAll/ShowAll.js';
 
 const Switch = ReactRouterDOM.Switch;
 const Route = ReactRouterDOM.Route;

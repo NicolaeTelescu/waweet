@@ -1,5 +1,15 @@
 const path = require('path');
 
+
+/* 
+        Ai nevoie de aceste module pentru ca 'webpack' sa functioneze:
+
+    "brotli-webpack-plugin": "^1.1.0",
+    "html-webpack-plugin": "^4.5.0",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.2.0"
+*/
+
 module.exports = {
 	entry: './Auxiliar/Webpack/Example.js',
     output: {

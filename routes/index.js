@@ -46,15 +46,20 @@ router.get('/items/all', async function(req, res, next) {
   
   let { search, category, page, limit } = req.query;
 
+  if (!page) page = 1;
+  if (!limit) limit = 5;
+  if (!search) search = '';
+  if (!category) category = '';
+  
+  page = parseInt(page);
+  limit = parseInt(limit);
+  
   try {
     const filter = {
       title: new RegExp(search, 'i'),
       category: new RegExp(category, 'i'),
       show: true
     };
-
-    page = parseInt(page);
-    limit = parseInt(limit);
 
     const items = await Item.find(filter).limit(limit).skip((page - 1) * limit);
     const count = await Item.countDocuments(filter);

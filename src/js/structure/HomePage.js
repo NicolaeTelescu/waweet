@@ -1,10 +1,5 @@
 'use strict';
 
-import {SearchingBar} from './layout/SearchingBar.js';
-import {Item} from './item/layout/SearchItem.js';
-import {Pagination} from './layout/Pagination.js';
-import {setSearchField} from './../redux/actions/searchActions.js';
-
 const useState = React.useState;
 const useEffect = React.useEffect;
 const useSelector = ReactRedux.useSelector;

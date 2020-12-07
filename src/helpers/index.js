@@ -14,6 +14,7 @@ const jimpFunction = async (images, width, quality) => {
 	);
 };
 
+
 const convertToSlug = (text) => {
 	return text.toLowerCase().replace(/ /g,'-').replace(/[-]+/g, '-').replace(/[^\w-]+/g,'');
 }
@@ -22,4 +23,4 @@ const convertToSlug = (text) => {
 module.exports = {
 	jimp: jimpFunction,
 	convertToSlug: convertToSlug
-}
+};
