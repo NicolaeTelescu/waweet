@@ -9,15 +9,14 @@ var _ButtonsSVG = require("./ButtonsSVG.js");
 
 function ChangePageButton(_ref) {
   var direction = _ref.direction,
-      inactivePage = _ref.inactivePage,
-      nextPage = _ref.nextPage,
-      goToPage = _ref.goToPage;
+      inactiveButtonPage = _ref.inactiveButtonPage,
+      changePage = _ref.changePage;
   return /*#__PURE__*/React.createElement("li", {
-    className: "page-item" + (inactivePage ? " disabled" : '')
+    className: "page-item" + (inactiveButtonPage ? " disabled" : '')
   }, /*#__PURE__*/React.createElement("a", {
     className: "page-link",
     onClick: function onClick() {
-      if (!inactivePage) goToPage(nextPage);
+      if (!inactiveButtonPage) changePage();
     }
   }, /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement(_ButtonsSVG.ChangePageButtonSVG, {
     direction: direction

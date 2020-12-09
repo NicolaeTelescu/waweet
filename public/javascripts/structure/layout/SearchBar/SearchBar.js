@@ -5,11 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.SearchBar = SearchBar;
 
-var _SearchButton = require("./SearchButton.js");
-
 var _FilterButton = require("./FilterButton.js");
 
-var _AddItemButton = require("./AddItemButton.js");
+var _ButtonsSVG = require("./ButtonsSVG.js");
 
 var _helpers = require("./helpers.js");
 
@@ -37,7 +35,7 @@ function SearchBar(props) {
   var useDispatch = ReactRedux.useDispatch();
   return /*#__PURE__*/React.createElement("div", {
     className: "showItems__searchingBar"
-  }, /*#__PURE__*/React.createElement(_AddItemButton.AddItemButton, null), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(_ButtonsSVG.AddItemButton, null), /*#__PURE__*/React.createElement("div", {
     className: "showItems__searchFields"
   }, /*#__PURE__*/React.createElement("input", {
     type: "text",
@@ -51,7 +49,7 @@ function SearchBar(props) {
     onKeyDown: function onKeyDown(e) {
       return (0, _helpers.onKeyDown)(e, searchBar, useDispatch);
     }
-  }), /*#__PURE__*/React.createElement(_SearchButton.SearchButton, {
+  }), /*#__PURE__*/React.createElement(_ButtonsSVG.SearchButton, {
     onClick: function onClick(e) {
       return (0, _helpers.handleSubmit)(e, searchBar, useDispatch);
     }

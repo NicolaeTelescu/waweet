@@ -1,8 +1,7 @@
 'use strict';
 
-import {SearchButton} from './SearchButton.js';
 import {FilterButton} from './FilterButton.js';
-import {AddItemButton} from './AddItemButton.js';
+import {AddItemButton, SearchButton} from './ButtonsSVG.js';
 import {initStateSearchBar, handleChange, handleSubmit, onKeyDown} from './helpers.js';
 
 const useState = React.useState;

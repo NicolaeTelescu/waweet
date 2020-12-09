@@ -5,9 +5,10 @@
   "scripts": {
     "start": "run-p startMongoDB startNode",
     "startNode": "node app.js",
-    "startDev": "run-p startSASS startReact startMongoDB startNodemon",
+    "startDev": "run-p startSASS startReact startWatchify startMongoDB startNodemon",
     "startNodemon": "nodemon app.js",
-    "startReact": "npx babel --watch src/js --out-dir ./public/javascripts",
+    "startReact": "npx babel --watch src/js --out-dir public/javascripts",
+    "startWatchify": "watchify public/javascripts/React.js -o public/javascripts/React_bundled.js",
     "startMongoDB": "mongod --dbpath=\"Database/Database/\" --logpath=\"Database/Database/logs/logs.txt\"",
     "startSASS": "node-sass -q --watch --output-style compressed src/stylesheets/main.scss public/stylesheets/style.css",
     "seedDB": "npm run createFilesDB && (run-p startMongoDB mongoSeed)",

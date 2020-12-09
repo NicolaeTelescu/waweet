@@ -31,6 +31,7 @@ Waweet is a web app where users review food. Here you can discover new food that
 ## Requirements
 - [MongoDB](https://www.mongodb.com/) v4.4 - Database
 - [Node.js](https://nodejs.org/en/) v12.18.3 - Web Server
+- [Watchify](https://www.npmjs.com/package/watchify) v3.11.1 - Module Bundler
 <br/><br/>
 
 ## First use:

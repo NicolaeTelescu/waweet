@@ -5,11 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.PackItemPages = PackItemPages;
 
-var _Show = require("./Show.js");
+var _Show = require("./Methods/Show.js");
 
-var _Add = require("./Add.js");
+var _Add = require("./Methods/Add.js");
 
-var _Edit = require("./Edit.js");
+var _Edit = require("./Methods/Edit.js");
 
 var _ShowAll = require("./ShowAll/ShowAll.js");
 

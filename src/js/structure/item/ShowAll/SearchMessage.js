@@ -7,11 +7,8 @@ export function SearchMessage(props) {
 	const search = useSelector(state => state.search.search);
 	const totalElements = useSelector(state => state.search.totalElements);
 	
-	let searchMessage = `You searched for '${search}':`;
-	let noElementFound = null;
-
-	if (!search) searchMessage = null;
-	if (!totalElements) noElementFound = 'No element found!';
+	let searchMessage = search ? `You searched for '${search}':` : null;
+	let noElementFound = totalElements ? null : 'No element found!';
 
 	return (
 		<div>

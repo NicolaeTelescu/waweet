@@ -51,7 +51,7 @@ router.post('/items/edit/:itemSlug',
 			req.session.form = form;
 			req.session.errors = errors.array();
 	
-			return res.redirect('/item/edit/' + req.params.itemSlug);
+			return res.redirect('/items/edit/' + req.params.itemSlug);
 		}
 
 
