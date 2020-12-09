@@ -1,13 +1,15 @@
 'use strict';
 
 import {setSearchField} from '../../../redux/actions/searchActions.js';
-import {Item} from '../layout/SearchItem.js';
+import {Item} from '../layout/SearchItem/SearchItem.js';
+
+const useSelector = ReactRedux.useSelector;
 
 
 export function fetchItemsToShow(setItems, useDispatch) {
 
-	const {pageURL, searchURL, categoryURL} = getParametersURL();
-	setURLParametersToState({pageURL, searchURL, categoryURL}, useDispatch);
+	const {pageURL, searchURL, categoryURL} = getParamsURL();
+	setParamsToState({page: pageURL, search: searchURL, category: categoryURL}, useDispatch);
 
 	fetch(`http://www.localhost:3000/items/all?search=${searchURL}&category=${categoryURL}&page=${pageURL}`)
 		.then(response => response.json())
@@ -29,7 +31,7 @@ export function fetchItemsToShow(setItems, useDispatch) {
 }
 
 
-function getParametersURL() {
+function getParamsURL() {
 	const url = new URL(window.location.href);
 	const pageURL = url.searchParams.get('page') ? Number(url.searchParams.get('page')) : 1;
 	const searchURL = url.searchParams.get('search') ? url.searchParams.get('search') : '';
@@ -39,10 +41,10 @@ function getParametersURL() {
 }
 
 
-function setURLParametersToState({pageURL, searchURL, categoryURL}, useDispatch) {
-	useDispatch(setSearchField({type: 'PAGE', payload: pageURL}));
-	useDispatch(setSearchField({type: 'SEARCH', payload: searchURL}));
-	useDispatch(setSearchField({type: 'CATEGORY', payload: categoryURL}));
+function setParamsToState({page, search, category}, useDispatch) {
+	useDispatch(setSearchField({type: 'PAGE', payload: page}));
+	useDispatch(setSearchField({type: 'SEARCH', payload: search}));
+	useDispatch(setSearchField({type: 'CATEGORY', payload: category}));
 }
 
 
@@ -54,4 +56,12 @@ export function changeURLPageReset(changeable, {search, category}) {
 export function changeURL(changeable, {search, category, page}) {
 	if (changeable)
 		window.location.href = `http://www.localhost:3000/items?search=${search}&category=${category}&page=${page}`;
+}
+
+export function getStateSearchParams() {
+	return {
+		page: useSelector(state => state.search.page),
+		search: useSelector(state => state.search.search),
+		category: useSelector(state => state.search.category)
+	};
 }

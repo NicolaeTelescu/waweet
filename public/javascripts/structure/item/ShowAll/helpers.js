@@ -6,21 +6,24 @@ Object.defineProperty(exports, "__esModule", {
 exports.fetchItemsToShow = fetchItemsToShow;
 exports.changeURLPageReset = changeURLPageReset;
 exports.changeURL = changeURL;
+exports.getStateSearchParams = getStateSearchParams;
 
 var _searchActions = require("../../../redux/actions/searchActions.js");
 
-var _SearchItem = require("../layout/SearchItem.js");
+var _SearchItem = require("../layout/SearchItem/SearchItem.js");
+
+var useSelector = ReactRedux.useSelector;
 
 function fetchItemsToShow(setItems, useDispatch) {
-  var _getParametersURL = getParametersURL(),
-      pageURL = _getParametersURL.pageURL,
-      searchURL = _getParametersURL.searchURL,
-      categoryURL = _getParametersURL.categoryURL;
+  var _getParamsURL = getParamsURL(),
+      pageURL = _getParamsURL.pageURL,
+      searchURL = _getParamsURL.searchURL,
+      categoryURL = _getParamsURL.categoryURL;
 
-  setURLParametersToState({
-    pageURL: pageURL,
-    searchURL: searchURL,
-    categoryURL: categoryURL
+  setParamsToState({
+    page: pageURL,
+    search: searchURL,
+    category: categoryURL
   }, useDispatch);
   fetch("http://www.localhost:3000/items/all?search=".concat(searchURL, "&category=").concat(categoryURL, "&page=").concat(pageURL)).then(function (response) {
     return response.json();
@@ -43,7 +46,7 @@ function fetchItemsToShow(setItems, useDispatch) {
   });
 }
 
-function getParametersURL() {
+function getParamsURL() {
   var url = new URL(window.location.href);
   var pageURL = url.searchParams.get('page') ? Number(url.searchParams.get('page')) : 1;
   var searchURL = url.searchParams.get('search') ? url.searchParams.get('search') : '';
@@ -55,21 +58,21 @@ function getParametersURL() {
   };
 }
 
-function setURLParametersToState(_ref, useDispatch) {
-  var pageURL = _ref.pageURL,
-      searchURL = _ref.searchURL,
-      categoryURL = _ref.categoryURL;
+function setParamsToState(_ref, useDispatch) {
+  var page = _ref.page,
+      search = _ref.search,
+      category = _ref.category;
   useDispatch((0, _searchActions.setSearchField)({
     type: 'PAGE',
-    payload: pageURL
+    payload: page
   }));
   useDispatch((0, _searchActions.setSearchField)({
     type: 'SEARCH',
-    payload: searchURL
+    payload: search
   }));
   useDispatch((0, _searchActions.setSearchField)({
     type: 'CATEGORY',
-    payload: categoryURL
+    payload: category
   }));
 }
 
@@ -84,4 +87,18 @@ function changeURL(changeable, _ref3) {
       category = _ref3.category,
       page = _ref3.page;
   if (changeable) window.location.href = "http://www.localhost:3000/items?search=".concat(search, "&category=").concat(category, "&page=").concat(page);
+}
+
+function getStateSearchParams() {
+  return {
+    page: useSelector(function (state) {
+      return state.search.page;
+    }),
+    search: useSelector(function (state) {
+      return state.search.search;
+    }),
+    category: useSelector(function (state) {
+      return state.search.category;
+    })
+  };
 }

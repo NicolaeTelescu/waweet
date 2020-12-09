@@ -59,7 +59,7 @@ mongoose.connect(
 
 // Every wrong route redirect to homepage (for now)
 app.use(function(req, res, next) {
-  res.redirect(404, '/product');
+  res.redirect(404, '/');
 });
 
 

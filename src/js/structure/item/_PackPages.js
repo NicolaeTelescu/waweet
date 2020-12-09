@@ -1,6 +1,6 @@
-import {ShowItemPage} from './Show.js';
-import {AddItemPage} from './Add.js';
-import {EditItemPage} from './Edit.js';
+import {ShowItemPage} from './Methods/Show.js';
+import {AddItemPage} from './Methods/Add.js';
+import {EditItemPage} from './Methods/Edit.js';
 import {ShowItemsPage} from './ShowAll/ShowAll.js';
 
 const Switch = ReactRouterDOM.Switch;

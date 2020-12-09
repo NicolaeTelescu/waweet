@@ -29,15 +29,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var useState = React.useState;
 var useEffect = React.useEffect;
-var useSelector = ReactRedux.useSelector;
 
 function ShowItemsPage(props) {
   return /*#__PURE__*/React.createElement("div", {
     className: "showItems__mainContent"
-  }, /*#__PURE__*/React.createElement(_SearchBar.SearchBar, null), /*#__PURE__*/React.createElement(Options, null));
+  }, /*#__PURE__*/React.createElement(_SearchBar.SearchBar, null), /*#__PURE__*/React.createElement(Items, null));
 }
 
-function Options(props) {
+function Items(props) {
   var useDispatch = ReactRedux.useDispatch();
 
   var _useState = useState({
@@ -52,15 +51,11 @@ function Options(props) {
     return (0, _helpers.fetchItemsToShow)(setItems, useDispatch);
   }, []); // These variables can be modified from another part of the application
 
-  var page = useSelector(function (state) {
-    return state.search.page;
-  });
-  var search = useSelector(function (state) {
-    return state.search.search;
-  });
-  var category = useSelector(function (state) {
-    return state.search.category;
-  });
+  var _getStateSearchParams = (0, _helpers.getStateSearchParams)(),
+      page = _getStateSearchParams.page,
+      search = _getStateSearchParams.search,
+      category = _getStateSearchParams.category;
+
   useEffect(function () {
     return (0, _helpers.changeURLPageReset)(items.changeable, {
       search: search,
@@ -75,6 +70,6 @@ function Options(props) {
     });
   }, [page]);
   return /*#__PURE__*/React.createElement("div", {
-    className: "showItems__options"
+    className: "showItems__items"
   }, /*#__PURE__*/React.createElement(_SearchMessage.SearchMessage, null), items.data, /*#__PURE__*/React.createElement(_Pagination.Pagination, null));
 }

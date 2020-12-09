@@ -46,7 +46,7 @@ router.post('/items/add',
 			req.session.form = form;
 			req.session.errors = errors.array();
 	
-			return res.redirect('/item/add');
+			return res.redirect('/items/add');
 		}
   
   

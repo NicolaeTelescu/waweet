@@ -1,12 +1,12 @@
 'use strict';
 
-var _Header = require("./structure/layout/Header.js");
+var _Header = require("./structure/layout/Header/Header.js");
 
-var _Footer = require("./structure/layout/Footer.js");
+var _Footer = require("./structure/layout/Footer/Footer.js");
 
-var _Message = require("./structure/layout/Message.js");
+var _Message = require("./structure/layout/Message/Message.js");
 
-var _HomePage = require("./structure/HomePage.js");
+var _HomePage = require("./structure/HomePage/HomePage.js");
 
 var _PackPages = require("./structure/item/_PackPages.js");
 
