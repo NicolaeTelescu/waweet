@@ -19,11 +19,12 @@ export function readURL(input) {
 }
 
 
-export function AddImageButton({errors}) {
+export function AddImageButton({item, errors}) {
 
 	let buttonStyle = {position: "absolute"};
-
-	if (errors.imageError || (params.form && params.form.ID)) {
+	const imageInput = document.getElementById('image');
+			
+	if (errors.imageError || item.ID || (imageInput && imageInput.files.length)) {
 		buttonStyle.display = "none";
 	}
 	

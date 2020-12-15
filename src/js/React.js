@@ -32,9 +32,9 @@ function App(props) {
 }
 
 // Create store
-let store = Redux.createStore(allReducers);
+const store = Redux.createStore(allReducers);
 
-let domContainer = document.querySelector('#react_container');
+const domContainer = document.querySelector('#react_container');
 ReactDOM.render(
 	<Provider store={store}>
 		<Router>

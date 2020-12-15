@@ -7,6 +7,7 @@ exports.fetchItemsToShow = fetchItemsToShow;
 exports.changeURLPageReset = changeURLPageReset;
 exports.changeURL = changeURL;
 exports.getStateSearchParams = getStateSearchParams;
+exports.deleteFetchElement = deleteFetchElement;
 
 var _searchActions = require("../../../redux/actions/searchActions.js");
 
@@ -101,4 +102,24 @@ function getStateSearchParams() {
       return state.search.category;
     })
   };
+}
+
+function deleteFetchElement(slug) {
+  fetch('http://www.localhost:3000/items/delete/' + slug, {
+    method: 'POST',
+    credentials: 'include'
+  }).then(function (response) {
+    if (!response.ok) {
+      response.text().then(function (message) {
+        return alert(message);
+      });
+    } else {
+      window.location.href = addReceivedMessageURL();
+    }
+  });
+}
+
+function addReceivedMessageURL() {
+  var url = new URL(window.location.href);
+  if (window.location.search == '') return window.location.href + '?receivedMessage=yes';else if (url.searchParams.get('receivedMessage')) return window.location.href;else if (window.location.search != '') return window.location.href + '&receivedMessage=yes';
 }

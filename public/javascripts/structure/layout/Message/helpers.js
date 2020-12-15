@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.RejectButton = RejectButton;
 exports.closeMessageTimeout = closeMessageTimeout;
-exports.getMessage = getMessage;
+exports.fetchMessage = fetchMessage;
 
 function RejectButton(props) {
   return /*#__PURE__*/React.createElement("svg", {
@@ -27,9 +27,18 @@ function closeMessageTimeout() {
   }, 5000);
 }
 
-function getMessage() {
-  return {
-    message: params.success ? params.success : null,
-    className: params.success ? 'success' : null
-  };
+function fetchMessage(setMessage) {
+  if (receivedMessage() === 'yes') {
+    fetch('http://www.localhost:3000/serverMessage').then(function (response) {
+      return response.text();
+    }).then(function (result) {
+      return setMessage(result);
+    });
+  }
+}
+
+function receivedMessage() {
+  var url = new URL(window.location.href);
+  var receivedMessageURL = url.searchParams.get('receivedMessage') ? url.searchParams.get('receivedMessage') : 'no';
+  return receivedMessageURL;
 }

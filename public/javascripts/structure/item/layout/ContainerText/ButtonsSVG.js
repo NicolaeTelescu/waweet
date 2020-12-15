@@ -6,10 +6,13 @@ Object.defineProperty(exports, "__esModule", {
 exports.AcceptButton = AcceptButton;
 exports.RejectButton = RejectButton;
 
-function AcceptButton(props) {
+var _helpers = require("./../../Methods/helpers.js");
+
+function AcceptButton(_ref) {
+  var sendForm = _ref.sendForm;
   return /*#__PURE__*/React.createElement("a", {
     onClick: function onClick() {
-      return document.getElementById("itemForm").submit();
+      return sendForm();
     }
   }, /*#__PURE__*/React.createElement("svg", {
     width: "1em",
@@ -26,7 +29,9 @@ function AcceptButton(props) {
 
 function RejectButton(props) {
   return /*#__PURE__*/React.createElement("a", {
-    href: "/items"
+    onClick: function onClick() {
+      return window.history.back();
+    }
   }, /*#__PURE__*/React.createElement("svg", {
     width: "1em",
     height: "1em",

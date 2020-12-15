@@ -27,12 +27,14 @@ function readURL(input) {
 }
 
 function AddImageButton(_ref2) {
-  var errors = _ref2.errors;
+  var item = _ref2.item,
+      errors = _ref2.errors;
   var buttonStyle = {
     position: "absolute"
   };
+  var imageInput = document.getElementById('image');
 
-  if (errors.imageError || params.form && params.form.ID) {
+  if (errors.imageError || item.ID || imageInput && imageInput.files.length) {
     buttonStyle.display = "none";
   }
 

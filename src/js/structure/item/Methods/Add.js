@@ -2,20 +2,21 @@
 
 import {ContainerImage} from '../layout/ContainerImage/ContainerImage.js';
 import {ContainerText} from '../layout/ContainerText/ContainerText.js';
-import {getErrors} from './helpers.js';
+import {sendForm, handleChange} from './helpers.js';
 
+const useState = React.useState;
 const useEffect = React.useEffect;
 
 export function AddItemPage(props) {
-	let errors = getErrors();
-
-	params.image = '';
+	
+	const [item, setItem] = useState({title: "", category: ""});
+	const [errors, setErrors] = useState({});
 
 	return (
-		<form className="itemPage__container" id="itemForm" action="/items/add" method="post" encType="multipart/form-data" runat="server">
+		<form className="itemPage__container" id="itemForm" encType="multipart/form-data">
 			<div className="itemPage__details">
-				<ContainerImage errors={errors} />
-				<ContainerText errors={errors} />
+				<ContainerImage item={item} errors={errors} />
+				<ContainerText item={item} errors={errors} handleChange={(e) => handleChange(e, item, setItem)} sendForm={() => sendForm('add', setErrors)} />
 			</div>
 		</form>
 	);

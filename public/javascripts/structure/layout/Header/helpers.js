@@ -6,5 +6,5 @@ Object.defineProperty(exports, "__esModule", {
 exports.goTo = goTo;
 
 function goTo(href) {
-  window.location.href = href;
+  window.location.href = 'http://www.localhost:3000' + href;
 }

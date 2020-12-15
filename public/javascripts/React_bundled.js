@@ -1,4 +1,109 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+module.exports = _arrayLikeToArray;
+},{}],2:[function(require,module,exports){
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+module.exports = _arrayWithHoles;
+},{}],3:[function(require,module,exports){
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
+},{}],4:[function(require,module,exports){
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    "default": obj
+  };
+}
+
+module.exports = _interopRequireDefault;
+},{}],5:[function(require,module,exports){
+function _iterableToArrayLimit(arr, i) {
+  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+module.exports = _iterableToArrayLimit;
+},{}],6:[function(require,module,exports){
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+module.exports = _nonIterableRest;
+},{}],7:[function(require,module,exports){
+var arrayWithHoles = require("./arrayWithHoles");
+
+var iterableToArrayLimit = require("./iterableToArrayLimit");
+
+var unsupportedIterableToArray = require("./unsupportedIterableToArray");
+
+var nonIterableRest = require("./nonIterableRest");
+
+function _slicedToArray(arr, i) {
+  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
+}
+
+module.exports = _slicedToArray;
+},{"./arrayWithHoles":2,"./iterableToArrayLimit":5,"./nonIterableRest":6,"./unsupportedIterableToArray":8}],8:[function(require,module,exports){
+var arrayLikeToArray = require("./arrayLikeToArray");
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrayLikeToArray(o, minLen);
+}
+
+module.exports = _unsupportedIterableToArray;
+},{"./arrayLikeToArray":1}],9:[function(require,module,exports){
 'use strict';
 
 var _Header = require("./structure/layout/Header/Header.js");
@@ -37,7 +142,7 @@ var domContainer = document.querySelector('#react_container');
 ReactDOM.render( /*#__PURE__*/React.createElement(Provider, {
   store: store
 }, /*#__PURE__*/React.createElement(Router, null, /*#__PURE__*/React.createElement(App, null))), domContainer);
-},{"./redux/reducers/index.js":4,"./structure/HomePage/HomePage.js":8,"./structure/item/_PackPages.js":17,"./structure/layout/Footer/Footer.js":33,"./structure/layout/Header/Header.js":37,"./structure/layout/Message/Message.js":39}],2:[function(require,module,exports){
+},{"./redux/reducers/index.js":12,"./structure/HomePage/HomePage.js":16,"./structure/item/_PackPages.js":25,"./structure/layout/Footer/Footer.js":41,"./structure/layout/Header/Header.js":45,"./structure/layout/Message/Message.js":47}],10:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -53,7 +158,7 @@ var setRating = function setRating(rating) {
 };
 
 exports.setRating = setRating;
-},{}],3:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -71,8 +176,10 @@ var setSearchField = function setSearchField(_ref) {
 };
 
 exports.setSearchField = setSearchField;
-},{}],4:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 "use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -83,14 +190,12 @@ var _ratingReducer = _interopRequireDefault(require("./ratingReducer.js"));
 
 var _searchReducer = _interopRequireDefault(require("./searchReducer.js"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
 var allReducers = Redux.combineReducers({
   rating: _ratingReducer["default"],
   search: _searchReducer["default"]
 });
 exports.allReducers = allReducers;
-},{"./ratingReducer.js":5,"./searchReducer.js":6}],5:[function(require,module,exports){
+},{"./ratingReducer.js":13,"./searchReducer.js":14,"@babel/runtime/helpers/interopRequireDefault":4}],13:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -125,19 +230,21 @@ var ratingReducer = function ratingReducer() {
 
 var _default = ratingReducer;
 exports["default"] = _default;
-},{}],6:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 "use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
 
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 var initialState = {
   search: '',
@@ -184,7 +291,7 @@ var searchReducer = function searchReducer() {
 
 var _default = searchReducer;
 exports["default"] = _default;
-},{}],7:[function(require,module,exports){
+},{"@babel/runtime/helpers/defineProperty":3,"@babel/runtime/helpers/interopRequireDefault":4}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -222,7 +329,7 @@ function Categories(props) {
     className: "home__categories"
   }, categories);
 }
-},{}],8:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -239,7 +346,7 @@ function HomePage(props) {
     className: "home__container"
   }, /*#__PURE__*/React.createElement(_Title.Title, null), /*#__PURE__*/React.createElement(_Categories.Categories, null));
 }
-},{"./Categories.js":7,"./Title.js":9}],9:[function(require,module,exports){
+},{"./Categories.js":15,"./Title.js":17}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -257,90 +364,152 @@ function Title(props) {
     }
   }, "today"), "?"));
 }
-},{}],10:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 'use strict';
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.AddItemPage = AddItemPage;
 
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
 var _ContainerImage = require("../layout/ContainerImage/ContainerImage.js");
 
 var _ContainerText = require("../layout/ContainerText/ContainerText.js");
 
 var _helpers = require("./helpers.js");
 
+var useState = React.useState;
 var useEffect = React.useEffect;
 
 function AddItemPage(props) {
-  var errors = (0, _helpers.getErrors)();
-  params.image = '';
+  var _useState = useState({
+    title: "",
+    category: ""
+  }),
+      _useState2 = (0, _slicedToArray2["default"])(_useState, 2),
+      item = _useState2[0],
+      setItem = _useState2[1];
+
+  var _useState3 = useState({}),
+      _useState4 = (0, _slicedToArray2["default"])(_useState3, 2),
+      errors = _useState4[0],
+      setErrors = _useState4[1];
+
   return /*#__PURE__*/React.createElement("form", {
     className: "itemPage__container",
     id: "itemForm",
-    action: "/items/add",
-    method: "post",
-    encType: "multipart/form-data",
-    runat: "server"
+    encType: "multipart/form-data"
   }, /*#__PURE__*/React.createElement("div", {
     className: "itemPage__details"
   }, /*#__PURE__*/React.createElement(_ContainerImage.ContainerImage, {
+    item: item,
     errors: errors
   }), /*#__PURE__*/React.createElement(_ContainerText.ContainerText, {
-    errors: errors
+    item: item,
+    errors: errors,
+    handleChange: function handleChange(e) {
+      return (0, _helpers.handleChange)(e, item, setItem);
+    },
+    sendForm: function sendForm() {
+      return (0, _helpers.sendForm)('add', setErrors);
+    }
   })));
 }
-},{"../layout/ContainerImage/ContainerImage.js":18,"../layout/ContainerText/ContainerText.js":24,"./helpers.js":13}],11:[function(require,module,exports){
+},{"../layout/ContainerImage/ContainerImage.js":26,"../layout/ContainerText/ContainerText.js":32,"./helpers.js":21,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/helpers/slicedToArray":7}],19:[function(require,module,exports){
 'use strict';
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.EditItemPage = EditItemPage;
 
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
 var _ContainerImage = require("../layout/ContainerImage/ContainerImage.js");
 
 var _ContainerText = require("../layout/ContainerText/ContainerText.js");
 
 var _helpers = require("./helpers.js");
 
+var useState = React.useState;
 var useEffect = React.useEffect;
 
 function EditItemPage(props) {
-  var errors = (0, _helpers.getErrors)();
-  params.image = '/images/eating/' + params.form.ID + '.jpg';
+  var _useState = useState(false),
+      _useState2 = (0, _slicedToArray2["default"])(_useState, 2),
+      item = _useState2[0],
+      setItem = _useState2[1];
+
+  var _useState3 = useState({}),
+      _useState4 = (0, _slicedToArray2["default"])(_useState3, 2),
+      errors = _useState4[0],
+      setErrors = _useState4[1];
+
+  useEffect(function () {
+    return (0, _helpers.getItemFetch)(setItem);
+  }, []);
+  if (!item) return /*#__PURE__*/React.createElement("div", {
+    className: "itemPage__container"
+  });
   return /*#__PURE__*/React.createElement("form", {
     className: "itemPage__container",
     id: "itemForm",
-    action: "/items/edit/" + params.form.slug,
-    method: "post",
-    encType: "multipart/form-data",
-    runat: "server"
+    encType: "multipart/form-data"
   }, /*#__PURE__*/React.createElement("div", {
     className: "itemPage__details"
   }, /*#__PURE__*/React.createElement(_ContainerImage.ContainerImage, {
+    item: item,
     errors: errors
   }), /*#__PURE__*/React.createElement(_ContainerText.ContainerText, {
-    errors: errors
+    item: item,
+    errors: errors,
+    handleChange: function handleChange(e) {
+      return (0, _helpers.handleChange)(e, item, setItem);
+    },
+    sendForm: function sendForm() {
+      return (0, _helpers.sendForm)('edit/' + item.slug, setErrors);
+    }
   })));
 }
-},{"../layout/ContainerImage/ContainerImage.js":18,"../layout/ContainerText/ContainerText.js":24,"./helpers.js":13}],12:[function(require,module,exports){
+},{"../layout/ContainerImage/ContainerImage.js":26,"../layout/ContainerText/ContainerText.js":32,"./helpers.js":21,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/helpers/slicedToArray":7}],20:[function(require,module,exports){
 'use strict';
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.ShowItemPage = ShowItemPage;
 
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
 var _ratingActions = require("../../../redux/actions/ratingActions.js");
 
+var _helpers = require("./helpers.js");
+
+var useState = React.useState;
+var useEffect = React.useEffect;
 var useSelector = ReactRedux.useSelector;
-var useDispatch = ReactRedux.useDispatch;
 
 function ShowItemPage(props) {
-  var item = params[0];
-  var dispatch = useDispatch()((0, _ratingActions.setRating)(item.rating));
+  var _useState = useState({
+    rating: 0
+  }),
+      _useState2 = (0, _slicedToArray2["default"])(_useState, 2),
+      item = _useState2[0],
+      setItem = _useState2[1];
+
+  useEffect(function () {
+    return (0, _helpers.getItemFetch)(setItem);
+  }, []);
+  var useDispatch = ReactRedux.useDispatch();
+  useDispatch((0, _ratingActions.setRating)(item.rating));
   var textForRating = useSelector(function (state) {
     return state.rating.text;
   });
@@ -348,14 +517,14 @@ function ShowItemPage(props) {
     return state.rating.color;
   });
   var ratingModified = Math.floor(item.rating / 10) + ',' + item.rating % 10;
-  var myStyle = {
-    backgroundColor: colorForRating
-  };
   var imgDimension = "55vh";
   var triangleStyle = {
     borderRight: "calc(" + imgDimension + "/4) solid " + colorForRating,
     borderTop: "calc(" + imgDimension + "/4) solid " + colorForRating
   };
+  if (!item.ID) return /*#__PURE__*/React.createElement("div", {
+    className: "itemPage__container"
+  });
   return /*#__PURE__*/React.createElement("div", {
     className: "itemPage__container"
   }, /*#__PURE__*/React.createElement("div", {
@@ -390,27 +559,40 @@ function ShowItemPage(props) {
   }, "Rating:"), /*#__PURE__*/React.createElement("div", {
     className: "itemPage__details-text-value"
   }, /*#__PURE__*/React.createElement("span", {
-    style: myStyle
+    style: {
+      backgroundColor: colorForRating
+    }
   }, textForRating)))));
 }
-},{"../../../redux/actions/ratingActions.js":2}],13:[function(require,module,exports){
+},{"../../../redux/actions/ratingActions.js":10,"./helpers.js":21,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/helpers/slicedToArray":7}],21:[function(require,module,exports){
 'use strict';
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getErrors = getErrors;
+exports.sendForm = sendForm;
+exports.getItemFetch = getItemFetch;
+exports.getFetchCategories = getFetchCategories;
+exports.handleChange = handleChange;
 
-function getErrors() {
-  if (params.errors) {
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function getFetchErrors(fetchErrors) {
+  if (fetchErrors) {
     return {
-      imageError: params.errors.find(function (element) {
+      imageError: fetchErrors.find(function (element) {
         return element.param === 'image-validation';
       }),
-      titleError: params.errors.find(function (element) {
+      titleError: fetchErrors.find(function (element) {
         return element.param === 'title';
       }),
-      categoryError: params.errors.find(function (element) {
+      categoryError: fetchErrors.find(function (element) {
         return element.param === 'category';
       })
     };
@@ -418,7 +600,57 @@ function getErrors() {
 
   return {};
 }
-},{}],14:[function(require,module,exports){
+
+function sendForm(type, setErrors) {
+  var formData = new FormData(document.getElementById("itemForm"));
+  fetch('http://www.localhost:3000/items/' + type, {
+    method: 'POST',
+    credentials: 'include',
+    body: formData
+  }).then(function (response) {
+    if (!response.ok) {
+      response.text().then(function (text) {
+        var errors = getFetchErrors(JSON.parse(text));
+        setErrors(errors);
+      });
+    } else {
+      setErrors({});
+      window.location.href = 'http://www.localhost:3000/items?receivedMessage=yes';
+    }
+  })["catch"](function (err) {
+    return console.error('Error: ', err);
+  });
+}
+
+function getItemSlug() {
+  return window.location.href.split('/').pop();
+}
+
+function getItemFetch(setItem) {
+  var itemSlug = getItemSlug();
+  fetch('http://www.localhost:3000/item/' + itemSlug).then(function (response) {
+    if (!response.ok) {
+      throw new Error('Something bad happened');
+    } else return response.json();
+  }).then(function (result) {
+    return setItem(result);
+  })["catch"](function (err) {
+    return console.log(err);
+  });
+}
+
+function getFetchCategories(setCategories) {
+  fetch('http://www.localhost:3000/categories/all').then(function (response) {
+    return response.json();
+  }).then(function (categories) {
+    return setCategories(categories);
+  });
+}
+
+function handleChange(event, entity, setEntity) {
+  setEntity(_objectSpread(_objectSpread({}, entity), {}, (0, _defineProperty2["default"])({}, event.target.name, event.target.value)));
+}
+},{"@babel/runtime/helpers/defineProperty":3,"@babel/runtime/helpers/interopRequireDefault":4}],22:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -440,13 +672,17 @@ function SearchMessage(props) {
     className: "showItems__item__search-message"
   }, searchMessage), /*#__PURE__*/React.createElement("div", null, noElementFound));
 }
-},{}],15:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 'use strict';
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.ShowItemsPage = ShowItemsPage;
+
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
 var _SearchBar = require("../../layout/SearchBar/SearchBar.js");
 
@@ -457,18 +693,6 @@ var _SearchMessage = require("./SearchMessage.js");
 var _searchActions = require("../../../redux/actions/searchActions.js");
 
 var _helpers = require("./helpers.js");
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var useState = React.useState;
 var useEffect = React.useEffect;
@@ -486,7 +710,7 @@ function Items(props) {
     data: null,
     changeable: false
   }),
-      _useState2 = _slicedToArray(_useState, 2),
+      _useState2 = (0, _slicedToArray2["default"])(_useState, 2),
       items = _useState2[0],
       setItems = _useState2[1];
 
@@ -516,7 +740,7 @@ function Items(props) {
     className: "showItems__items"
   }, /*#__PURE__*/React.createElement(_SearchMessage.SearchMessage, null), items.data, /*#__PURE__*/React.createElement(_Pagination.Pagination, null));
 }
-},{"../../../redux/actions/searchActions.js":3,"../../layout/Pagination/Pagination.js":44,"../../layout/SearchBar/SearchBar.js":49,"./SearchMessage.js":14,"./helpers.js":16}],16:[function(require,module,exports){
+},{"../../../redux/actions/searchActions.js":11,"../../layout/Pagination/Pagination.js":52,"../../layout/SearchBar/SearchBar.js":57,"./SearchMessage.js":22,"./helpers.js":24,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/helpers/slicedToArray":7}],24:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -526,6 +750,7 @@ exports.fetchItemsToShow = fetchItemsToShow;
 exports.changeURLPageReset = changeURLPageReset;
 exports.changeURL = changeURL;
 exports.getStateSearchParams = getStateSearchParams;
+exports.deleteFetchElement = deleteFetchElement;
 
 var _searchActions = require("../../../redux/actions/searchActions.js");
 
@@ -621,7 +846,27 @@ function getStateSearchParams() {
     })
   };
 }
-},{"../../../redux/actions/searchActions.js":3,"../layout/SearchItem/SearchItem.js":32}],17:[function(require,module,exports){
+
+function deleteFetchElement(slug) {
+  fetch('http://www.localhost:3000/items/delete/' + slug, {
+    method: 'POST',
+    credentials: 'include'
+  }).then(function (response) {
+    if (!response.ok) {
+      response.text().then(function (message) {
+        return alert(message);
+      });
+    } else {
+      window.location.href = addReceivedMessageURL();
+    }
+  });
+}
+
+function addReceivedMessageURL() {
+  var url = new URL(window.location.href);
+  if (window.location.search == '') return window.location.href + '?receivedMessage=yes';else if (url.searchParams.get('receivedMessage')) return window.location.href;else if (window.location.search != '') return window.location.href + '&receivedMessage=yes';
+}
+},{"../../../redux/actions/searchActions.js":11,"../layout/SearchItem/SearchItem.js":40}],25:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -659,7 +904,7 @@ function PackItemPages(props) {
     component: _Edit.EditItemPage
   }));
 }
-},{"./Methods/Add.js":10,"./Methods/Edit.js":11,"./Methods/Show.js":12,"./ShowAll/ShowAll.js":15}],18:[function(require,module,exports){
+},{"./Methods/Add.js":18,"./Methods/Edit.js":19,"./Methods/Show.js":20,"./ShowAll/ShowAll.js":23}],26:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -674,15 +919,17 @@ var _ImageFile = require("./ImageFile.js");
 var _helpers = require("./helpers.js");
 
 function ContainerImage(_ref) {
-  var errors = _ref.errors;
+  var item = _ref.item,
+      errors = _ref.errors;
   return /*#__PURE__*/React.createElement("div", {
     className: "itemPage__container-img"
   }, /*#__PURE__*/React.createElement("div", {
     className: "itemPage__details-img-border"
   }), /*#__PURE__*/React.createElement("img", {
     className: "itemPage__details-img",
-    src: params.image ? params.image : null
+    src: item.ID ? '/images/eating/' + item.ID + '.jpg' : null
   }), /*#__PURE__*/React.createElement(_helpers.AddImageButton, {
+    item: item,
     errors: errors
   }), /*#__PURE__*/React.createElement(_helpers.ImageError, {
     errors: errors
@@ -693,7 +940,7 @@ function ContainerImage(_ref) {
     htmlFor: "image"
   })), /*#__PURE__*/React.createElement(_ImageFile.ImageFile, null));
 }
-},{"./ImageFile.js":19,"./ItemRatingTriangle.js":20,"./helpers.js":21}],19:[function(require,module,exports){
+},{"./ImageFile.js":27,"./ItemRatingTriangle.js":28,"./helpers.js":29}],27:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -725,7 +972,7 @@ function handleChangeImage(event) {
   document.getElementsByClassName("itemPage__img-error")[0].style.display = "none";
   document.getElementsByClassName("bi-file-earmark-image")[0].style.display = "none";
 }
-},{"./helpers.js":21}],20:[function(require,module,exports){
+},{"./helpers.js":29}],28:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -754,7 +1001,7 @@ function ItemRatingTriangle(props) {
     className: "itemPage__rating-number"
   }, ratingModified));
 }
-},{}],21:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -784,12 +1031,14 @@ function readURL(input) {
 }
 
 function AddImageButton(_ref2) {
-  var errors = _ref2.errors;
+  var item = _ref2.item,
+      errors = _ref2.errors;
   var buttonStyle = {
     position: "absolute"
   };
+  var imageInput = document.getElementById('image');
 
-  if (errors.imageError || params.form && params.form.ID) {
+  if (errors.imageError || item.ID || imageInput && imageInput.files.length) {
     buttonStyle.display = "none";
   }
 
@@ -809,7 +1058,7 @@ function AddImageButton(_ref2) {
     d: "M6.502 7a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"
   }));
 }
-},{}],22:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -818,10 +1067,13 @@ Object.defineProperty(exports, "__esModule", {
 exports.AcceptButton = AcceptButton;
 exports.RejectButton = RejectButton;
 
-function AcceptButton(props) {
+var _helpers = require("./../../Methods/helpers.js");
+
+function AcceptButton(_ref) {
+  var sendForm = _ref.sendForm;
   return /*#__PURE__*/React.createElement("a", {
     onClick: function onClick() {
-      return document.getElementById("itemForm").submit();
+      return sendForm();
     }
   }, /*#__PURE__*/React.createElement("svg", {
     width: "1em",
@@ -838,7 +1090,9 @@ function AcceptButton(props) {
 
 function RejectButton(props) {
   return /*#__PURE__*/React.createElement("a", {
-    href: "/items"
+    onClick: function onClick() {
+      return window.history.back();
+    }
   }, /*#__PURE__*/React.createElement("svg", {
     width: "1em",
     height: "1em",
@@ -851,24 +1105,43 @@ function RejectButton(props) {
     d: "M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
   })));
 }
-},{}],23:[function(require,module,exports){
+},{"./../../Methods/helpers.js":21}],31:[function(require,module,exports){
 'use strict';
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Category = Category;
 
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
+var _helpers = require("./../../Methods/helpers.js");
+
+var useState = React.useState;
+var useEffect = React.useEffect;
+
 function Category(_ref) {
   var handleChange = _ref.handleChange,
       item = _ref.item,
       errors = _ref.errors;
-  var categories = params.categories.map(function (category, index) {
+
+  var _useState = useState([]),
+      _useState2 = (0, _slicedToArray2["default"])(_useState, 2),
+      categories = _useState2[0],
+      setCategories = _useState2[1];
+
+  useEffect(function () {
+    return (0, _helpers.getFetchCategories)(setCategories);
+  }, []);
+  var categoryOptions = categories.map(function (category, index) {
     return /*#__PURE__*/React.createElement("option", {
       key: index,
       value: category.name
     }, category.name);
   });
+  if (categories.length === 0) return null;
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "itemPage__details-text-category"
   }, /*#__PURE__*/React.createElement("span", null, "Category:"), /*#__PURE__*/React.createElement("span", {
@@ -882,9 +1155,9 @@ function Category(_ref) {
     onChange: handleChange
   }, /*#__PURE__*/React.createElement("option", {
     defaultValue: true
-  }, "- Set the category -"), categories)));
+  }, "- Set the category -"), categoryOptions)));
 }
-},{}],24:[function(require,module,exports){
+},{"./../../Methods/helpers.js":21,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/helpers/slicedToArray":7}],32:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -900,49 +1173,30 @@ var _Rating = require("./Rating.js");
 
 var _ButtonsSVG = require("./ButtonsSVG.js");
 
-var _helpers = require("./helpers.js");
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-var useState = React.useState;
-
 function ContainerText(_ref) {
-  var errors = _ref.errors;
-
-  var _useState = useState((0, _helpers.initialItemState)()),
-      _useState2 = _slicedToArray(_useState, 2),
-      item = _useState2[0],
-      setItem = _useState2[1];
-
+  var item = _ref.item,
+      errors = _ref.errors,
+      handleChange = _ref.handleChange,
+      sendForm = _ref.sendForm;
   return /*#__PURE__*/React.createElement("div", {
     className: "itemPage__details-text"
   }, /*#__PURE__*/React.createElement(_Title.Title, {
     item: item,
-    handleChange: function handleChange(e) {
-      return (0, _helpers.handleChange)(e, item, setItem);
-    },
+    handleChange: handleChange,
     errors: errors
   }), /*#__PURE__*/React.createElement(_Category.Category, {
-    handleChange: function handleChange(e) {
-      return (0, _helpers.handleChange)(e, item, setItem);
-    },
     item: item,
+    handleChange: handleChange,
     errors: errors
-  }), /*#__PURE__*/React.createElement(_Rating.Rating, null), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement(_Rating.Rating, {
+    item: item
+  }), /*#__PURE__*/React.createElement("div", {
     className: "itemPage__buttons"
-  }, /*#__PURE__*/React.createElement(_ButtonsSVG.AcceptButton, null), /*#__PURE__*/React.createElement(_ButtonsSVG.RejectButton, null)));
+  }, /*#__PURE__*/React.createElement(_ButtonsSVG.AcceptButton, {
+    sendForm: sendForm
+  }), /*#__PURE__*/React.createElement(_ButtonsSVG.RejectButton, null)));
 }
-},{"./ButtonsSVG.js":22,"./Category.js":23,"./Rating.js":25,"./Title.js":26,"./helpers.js":27}],25:[function(require,module,exports){
+},{"./ButtonsSVG.js":30,"./Category.js":31,"./Rating.js":33,"./Title.js":34}],33:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -955,7 +1209,8 @@ var _helpers = require("./helpers.js");
 var useSelector = ReactRedux.useSelector;
 var useEffect = React.useEffect;
 
-function Rating(props) {
+function Rating(_ref) {
+  var item = _ref.item;
   var useDispatch = ReactRedux.useDispatch();
   var rating = useSelector(function (state) {
     return state.rating.rating;
@@ -967,7 +1222,7 @@ function Rating(props) {
     return state.rating.color;
   });
   useEffect(function () {
-    return (0, _helpers.setFormParams)(useDispatch);
+    return (0, _helpers.setRatingItem)(item, useDispatch);
   }, []);
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "itemPage__details-text-category"
@@ -989,7 +1244,7 @@ function Rating(props) {
     value: rating
   }));
 }
-},{"./helpers.js":27}],26:[function(require,module,exports){
+},{"./helpers.js":35}],34:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1017,24 +1272,16 @@ function Title(_ref) {
     value: item.title
   })));
 }
-},{}],27:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.handleChangeRating = handleChangeRating;
-exports.setFormParams = setFormParams;
-exports.handleChange = handleChange;
-exports.initialItemState = initialItemState;
+exports.setRatingItem = setRatingItem;
 
 var _ratingActions = require("../../../../redux/actions/ratingActions.js");
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function handleChangeRating(event, useDispatch) {
   useDispatch((0, _ratingActions.setRating)(event.target.value));
@@ -1042,21 +1289,10 @@ function handleChangeRating(event, useDispatch) {
 
 ;
 
-function setFormParams(useDispatch) {
-  if (params.form) useDispatch((0, _ratingActions.setRating)(params.form.rating));
+function setRatingItem(item, useDispatch) {
+  if (item.rating) useDispatch((0, _ratingActions.setRating)(item.rating));
 }
-
-function handleChange(event, entity, setEntity) {
-  setEntity(_objectSpread(_objectSpread({}, entity), {}, _defineProperty({}, event.target.name, event.target.value)));
-}
-
-function initialItemState() {
-  return {
-    title: params.form ? params.form.title : "",
-    category: params.form ? params.form.category : "Set the category"
-  };
-}
-},{"../../../../redux/actions/ratingActions.js":2}],28:[function(require,module,exports){
+},{"../../../../redux/actions/ratingActions.js":10}],36:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1064,6 +1300,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.EditItemButton = EditItemButton;
 exports.DeleteItemButton = DeleteItemButton;
+
+var _helpers = require("./../../ShowAll/helpers.js");
 
 function EditItemButton(_ref) {
   var slug = _ref.slug;
@@ -1085,17 +1323,11 @@ function EditItemButton(_ref) {
 
 function DeleteItemButton(_ref2) {
   var slug = _ref2.slug;
-
-  var deleteElement = function deleteElement() {
-    document.getElementById("deleteItem-" + slug).submit();
-  };
-
-  return /*#__PURE__*/React.createElement("form", {
+  return /*#__PURE__*/React.createElement("div", {
     className: "showItems__item__button__delete",
-    action: "/items/delete/" + slug,
-    method: "post",
-    id: "deleteItem-" + slug,
-    onClick: deleteElement
+    onClick: function onClick() {
+      return (0, _helpers.deleteFetchElement)(slug);
+    }
   }, /*#__PURE__*/React.createElement("svg", {
     width: "1em",
     height: "1em",
@@ -1110,7 +1342,7 @@ function DeleteItemButton(_ref2) {
     d: "M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
   })));
 }
-},{}],29:[function(require,module,exports){
+},{"./../../ShowAll/helpers.js":24}],37:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1123,7 +1355,7 @@ function ItemBorder(props) {
     className: "showItems__item__img-border"
   });
 }
-},{}],30:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1149,7 +1381,7 @@ function ItemRating(_ref) {
     className: "showItems__item__rating-number"
   }, ratingModified)));
 }
-},{}],31:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1179,7 +1411,7 @@ function ItemText(_ref) {
     slug: slug
   })));
 }
-},{"./ButtonsSVG.js":28}],32:[function(require,module,exports){
+},{"./ButtonsSVG.js":36}],40:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1216,7 +1448,7 @@ function Item(_ref) {
     slug: slug
   }));
 }
-},{"./ItemBorder.js":29,"./ItemRating.js":30,"./ItemText.js":31}],33:[function(require,module,exports){
+},{"./ItemBorder.js":37,"./ItemRating.js":38,"./ItemText.js":39}],41:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1233,34 +1465,26 @@ function Footer(props) {
     className: "footer"
   }, /*#__PURE__*/React.createElement(_FooterDayPeriod.FooterDayPeriod, null), /*#__PURE__*/React.createElement(_FooterTime.FooterTime, null));
 }
-},{"./FooterDayPeriod.js":34,"./FooterTime.js":35}],34:[function(require,module,exports){
+},{"./FooterDayPeriod.js":42,"./FooterTime.js":43}],42:[function(require,module,exports){
 'use strict';
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.FooterDayPeriod = FooterDayPeriod;
 
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
 var _helpers = require("./helpers.js");
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var useState = React.useState;
 var useEffect = React.useEffect;
 
 function FooterDayPeriod(props) {
   var _useState = useState(new Date()),
-      _useState2 = _slicedToArray(_useState, 2),
+      _useState2 = (0, _slicedToArray2["default"])(_useState, 2),
       date = _useState2[0],
       setDate = _useState2[1];
 
@@ -1274,34 +1498,26 @@ function FooterDayPeriod(props) {
     }
   }, " ", dayPeriod, " Time ");
 }
-},{"./helpers.js":36}],35:[function(require,module,exports){
+},{"./helpers.js":44,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/helpers/slicedToArray":7}],43:[function(require,module,exports){
 'use strict';
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.FooterTime = FooterTime;
 
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
 var _helpers = require("./helpers.js");
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var useState = React.useState;
 var useEffect = React.useEffect;
 
 function FooterTime(props) {
   var _useState = useState(new Date()),
-      _useState2 = _slicedToArray(_useState, 2),
+      _useState2 = (0, _slicedToArray2["default"])(_useState, 2),
       date = _useState2[0],
       setDate = _useState2[1];
 
@@ -1319,7 +1535,7 @@ function FooterTime(props) {
   });
   return /*#__PURE__*/React.createElement("div", null, hours, ":", minutes, " ", partOfTheDay, " - ", day, " ", dayNumber, ", ", month, " ", year);
 }
-},{"./helpers.js":36}],36:[function(require,module,exports){
+},{"./helpers.js":44,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/helpers/slicedToArray":7}],44:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1392,7 +1608,7 @@ function getFooterDate(date) {
     year: year
   };
 }
-},{}],37:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1425,7 +1641,7 @@ function Header(props) {
     className: "header"
   }, buttons);
 }
-},{"../../../redux/actions/searchActions.js":3,"./helpers.js":38}],38:[function(require,module,exports){
+},{"../../../redux/actions/searchActions.js":11,"./helpers.js":46}],46:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1434,27 +1650,38 @@ Object.defineProperty(exports, "__esModule", {
 exports.goTo = goTo;
 
 function goTo(href) {
-  window.location.href = href;
+  window.location.href = 'http://www.localhost:3000' + href;
 }
-},{}],39:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 'use strict';
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Message = Message;
 
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
 var _helpers = require("./helpers.js");
 
-function Message(props) {
-  var _getMessage = (0, _helpers.getMessage)(),
-      message = _getMessage.message,
-      className = _getMessage.className;
+var useState = React.useState;
+var useEffect = React.useEffect;
 
+function Message(props) {
+  var _useState = useState(''),
+      _useState2 = (0, _slicedToArray2["default"])(_useState, 2),
+      message = _useState2[0],
+      setMessage = _useState2[1];
+
+  useEffect(function () {
+    return (0, _helpers.fetchMessage)(setMessage);
+  }, []);
   if (!message) return null;
   (0, _helpers.closeMessageTimeout)();
   return /*#__PURE__*/React.createElement("div", {
-    className: "showItems__message alert alert-" + className + " fade show",
+    className: "showItems__message alert alert-success fade show",
     role: "alert"
   }, /*#__PURE__*/React.createElement("span", null, message), /*#__PURE__*/React.createElement("button", {
     type: "button",
@@ -1468,7 +1695,7 @@ function Message(props) {
     "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement(_helpers.RejectButton, null))));
 }
-},{"./helpers.js":40}],40:[function(require,module,exports){
+},{"./helpers.js":48,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/helpers/slicedToArray":7}],48:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1476,7 +1703,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.RejectButton = RejectButton;
 exports.closeMessageTimeout = closeMessageTimeout;
-exports.getMessage = getMessage;
+exports.fetchMessage = fetchMessage;
 
 function RejectButton(props) {
   return /*#__PURE__*/React.createElement("svg", {
@@ -1498,13 +1725,22 @@ function closeMessageTimeout() {
   }, 5000);
 }
 
-function getMessage() {
-  return {
-    message: params.success ? params.success : null,
-    className: params.success ? 'success' : null
-  };
+function fetchMessage(setMessage) {
+  if (receivedMessage() === 'yes') {
+    fetch('http://www.localhost:3000/serverMessage').then(function (response) {
+      return response.text();
+    }).then(function (result) {
+      return setMessage(result);
+    });
+  }
 }
-},{}],41:[function(require,module,exports){
+
+function receivedMessage() {
+  var url = new URL(window.location.href);
+  var receivedMessageURL = url.searchParams.get('receivedMessage') ? url.searchParams.get('receivedMessage') : 'no';
+  return receivedMessageURL;
+}
+},{}],49:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1565,7 +1801,7 @@ function ChangePageButtonSVG(_ref) {
     d: "M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"
   }));
 }
-},{}],42:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1590,7 +1826,7 @@ function ChangePageButton(_ref) {
     direction: direction
   }))));
 }
-},{"./ButtonsSVG.js":41}],43:[function(require,module,exports){
+},{"./ButtonsSVG.js":49}],51:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1618,7 +1854,7 @@ function NumberButtons(_ref) {
   });
   return /*#__PURE__*/React.createElement(React.Fragment, null, numberButtons);
 }
-},{"./helpers.js":45}],44:[function(require,module,exports){
+},{"./helpers.js":53}],52:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1681,7 +1917,7 @@ function Pagination(props) {
     }
   })));
 }
-},{"./ChangePageButton.js":42,"./NumberButtons.js":43,"./helpers.js":45}],45:[function(require,module,exports){
+},{"./ChangePageButton.js":50,"./NumberButtons.js":51,"./helpers.js":53}],53:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1749,7 +1985,7 @@ function goToPage(page, useDispatch) {
     payload: page
   }));
 }
-},{"../../../redux/actions/searchActions.js":3}],46:[function(require,module,exports){
+},{"../../../redux/actions/searchActions.js":11}],54:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1810,7 +2046,7 @@ function SearchButton(_ref) {
     d: "M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"
   })));
 }
-},{}],47:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1839,7 +2075,7 @@ function FilterButton(_ref) {
     onChange: onChange
   })));
 }
-},{"./ButtonsSVG.js":46,"./FilterButtonCategories.js":48}],48:[function(require,module,exports){
+},{"./ButtonsSVG.js":54,"./FilterButtonCategories.js":56}],56:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1875,13 +2111,17 @@ function FilterButtonCategories(_ref) {
   });
   return /*#__PURE__*/React.createElement("div", null, categories);
 }
-},{}],49:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 'use strict';
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.SearchBar = SearchBar;
+
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
 var _FilterButton = require("./FilterButton.js");
 
@@ -1889,24 +2129,12 @@ var _ButtonsSVG = require("./ButtonsSVG.js");
 
 var _helpers = require("./helpers.js");
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 var useState = React.useState;
 var useSelector = ReactRedux.useSelector;
 
 function SearchBar(props) {
   var _useState = useState((0, _helpers.initStateSearchBar)()),
-      _useState2 = _slicedToArray(_useState, 2),
+      _useState2 = (0, _slicedToArray2["default"])(_useState, 2),
       searchBar = _useState2[0],
       setSearchBar = _useState2[1];
 
@@ -1938,8 +2166,10 @@ function SearchBar(props) {
     }
   })));
 }
-},{"./ButtonsSVG.js":46,"./FilterButton.js":47,"./helpers.js":50}],50:[function(require,module,exports){
+},{"./ButtonsSVG.js":54,"./FilterButton.js":55,"./helpers.js":58,"@babel/runtime/helpers/interopRequireDefault":4,"@babel/runtime/helpers/slicedToArray":7}],58:[function(require,module,exports){
 'use strict';
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -1949,13 +2179,13 @@ exports.handleChange = handleChange;
 exports.handleSubmit = handleSubmit;
 exports.onKeyDown = onKeyDown;
 
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
+
 var _searchActions = require("../../../redux/actions/searchActions.js");
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function initStateSearchBar() {
   var url = new URL(window.location.href);
@@ -1969,7 +2199,7 @@ function initStateSearchBar() {
 }
 
 function handleChange(event, entity, setEntity) {
-  setEntity(_objectSpread(_objectSpread({}, entity), {}, _defineProperty({}, event.target.name, event.target.value)));
+  setEntity(_objectSpread(_objectSpread({}, entity), {}, (0, _defineProperty2["default"])({}, event.target.name, event.target.value)));
 }
 
 function handleSubmit(event, searchBar, useDispatch) {
@@ -1988,4 +2218,4 @@ function onKeyDown(event, searchBar, useDispatch) {
     handleSubmit(event, searchBar, useDispatch);
   }
 }
-},{"../../../redux/actions/searchActions.js":3}]},{},[1]);
+},{"../../../redux/actions/searchActions.js":11,"@babel/runtime/helpers/defineProperty":3,"@babel/runtime/helpers/interopRequireDefault":4}]},{},[9]);

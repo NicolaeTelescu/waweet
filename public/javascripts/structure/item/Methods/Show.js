@@ -1,18 +1,35 @@
 'use strict';
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.ShowItemPage = ShowItemPage;
 
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
 var _ratingActions = require("../../../redux/actions/ratingActions.js");
 
+var _helpers = require("./helpers.js");
+
+var useState = React.useState;
+var useEffect = React.useEffect;
 var useSelector = ReactRedux.useSelector;
-var useDispatch = ReactRedux.useDispatch;
 
 function ShowItemPage(props) {
-  var item = params[0];
-  var dispatch = useDispatch()((0, _ratingActions.setRating)(item.rating));
+  var _useState = useState({
+    rating: 0
+  }),
+      _useState2 = (0, _slicedToArray2["default"])(_useState, 2),
+      item = _useState2[0],
+      setItem = _useState2[1];
+
+  useEffect(function () {
+    return (0, _helpers.getItemFetch)(setItem);
+  }, []);
+  var useDispatch = ReactRedux.useDispatch();
+  useDispatch((0, _ratingActions.setRating)(item.rating));
   var textForRating = useSelector(function (state) {
     return state.rating.text;
   });
@@ -20,14 +37,14 @@ function ShowItemPage(props) {
     return state.rating.color;
   });
   var ratingModified = Math.floor(item.rating / 10) + ',' + item.rating % 10;
-  var myStyle = {
-    backgroundColor: colorForRating
-  };
   var imgDimension = "55vh";
   var triangleStyle = {
     borderRight: "calc(" + imgDimension + "/4) solid " + colorForRating,
     borderTop: "calc(" + imgDimension + "/4) solid " + colorForRating
   };
+  if (!item.ID) return /*#__PURE__*/React.createElement("div", {
+    className: "itemPage__container"
+  });
   return /*#__PURE__*/React.createElement("div", {
     className: "itemPage__container"
   }, /*#__PURE__*/React.createElement("div", {
@@ -62,6 +79,8 @@ function ShowItemPage(props) {
   }, "Rating:"), /*#__PURE__*/React.createElement("div", {
     className: "itemPage__details-text-value"
   }, /*#__PURE__*/React.createElement("span", {
-    style: myStyle
+    style: {
+      backgroundColor: colorForRating
+    }
   }, textForRating)))));
 }

@@ -8,7 +8,6 @@ const Category = require('../../Database/models/Category');
 // Delete an item
 router.post('/items/delete/:itemSlug', async function(req, res, next) {
 	try {
-
 		const itemFilter = {
 			slug: req.params.itemSlug,
 			show: true
@@ -21,11 +20,27 @@ router.post('/items/delete/:itemSlug', async function(req, res, next) {
 		);
 		
 		req.session.success = `\'${item.title}\' has been deleted successfully`;
-		req.session.errors = false;
-		res.redirect('/items');
+		req.session.save();
+		return res.status(200).json({ status: 'OK' });
 
 	} catch (err) {
-	  res.json(JSON.stringify(err.message, Object.getOwnPropertyNames(err)));
+		return res.status(422).send(err.message);
+	}
+});
+
+
+
+// Restore elements
+router.get('/items/delete/restoreElements', async function(req, res, next) {
+	try {
+		const updatedItems = await Item.updateMany(
+			{ },
+			{ $set: {show: true} }
+		);
+		return res.status(200).json({ status: 'OK' });
+
+	} catch (err) {
+		return res.status(422).send(err.message);
 	}
 });
 

@@ -1,28 +1,32 @@
 'use strict';
 
 import {setRating} from '../../../redux/actions/ratingActions.js';
+import {getItemFetch} from './helpers.js';
 
+const useState = React.useState;
+const useEffect = React.useEffect;
 const useSelector = ReactRedux.useSelector;
-const useDispatch = ReactRedux.useDispatch;
 
 export function ShowItemPage(props) {
 
-	const item = params[0];
-	const dispatch = useDispatch()(setRating(item.rating));
+	const [item, setItem] = useState({rating: 0});
+
+	useEffect(() => getItemFetch(setItem), []);
+
+	const useDispatch = ReactRedux.useDispatch();
+	useDispatch(setRating(item.rating));
 	
 	const textForRating = useSelector(state => state.rating.text);
 	const colorForRating = useSelector(state => state.rating.color);
 	const ratingModified = Math.floor(item.rating / 10) + ',' + (item.rating % 10);
-
-	const myStyle = {
-		backgroundColor: colorForRating
-	}
 
 	const imgDimension = "55vh";
 	const triangleStyle = {
 		borderRight: "calc(" + imgDimension + "/4) solid " + colorForRating,
 		borderTop: "calc(" + imgDimension + "/4) solid " + colorForRating,
 	};
+
+	if (!item.ID) return (<div className="itemPage__container"></div>);
 
 	return (
 		<div className="itemPage__container">
@@ -43,7 +47,7 @@ export function ShowItemPage(props) {
 					<div className="itemPage__details-text-category">Category:</div>
 					<div className="itemPage__details-text-value">{item.category}</div>
 					<div className="itemPage__details-text-category">Rating:</div>
-					<div className="itemPage__details-text-value"><span style={myStyle}>{textForRating}</span></div>
+					<div className="itemPage__details-text-value"><span style={{backgroundColor: colorForRating}}>{textForRating}</span></div>
 				</div>
 			</div>
 		</div>

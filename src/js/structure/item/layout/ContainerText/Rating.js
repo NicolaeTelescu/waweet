@@ -1,11 +1,11 @@
 'use strict';
 
-import {handleChangeRating, setFormParams} from './helpers.js';
+import {handleChangeRating, setRatingItem} from './helpers.js';
 
 const useSelector = ReactRedux.useSelector;
 const useEffect = React.useEffect;
 
-export function Rating(props) {
+export function Rating({item}) {
 
 	const useDispatch = ReactRedux.useDispatch();
 
@@ -13,7 +13,7 @@ export function Rating(props) {
 	const textForRating = useSelector(state => state.rating.text);
 	const colorForRating = useSelector(state => state.rating.color);
 
-	useEffect(() => setFormParams(useDispatch), []);
+	useEffect(() => setRatingItem(item, useDispatch), []);
 
 	return (
 		<div>

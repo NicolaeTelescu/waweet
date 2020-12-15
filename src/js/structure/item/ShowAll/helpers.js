@@ -65,3 +65,30 @@ export function getStateSearchParams() {
 		category: useSelector(state => state.search.category)
 	};
 }
+
+export function deleteFetchElement(slug) {
+	fetch('http://www.localhost:3000/items/delete/' + slug, {
+		method: 'POST',
+		credentials: 'include'
+	})
+	.then(response => {
+		if (!response.ok) {
+			response.text()
+				.then(message => alert(message));
+		}
+		else {
+			window.location.href = addReceivedMessageURL();
+		}
+	});
+}
+
+function addReceivedMessageURL() {
+	const url = new URL(window.location.href);
+
+	if (window.location.search == '') 
+		return window.location.href + '?receivedMessage=yes'; 
+	else if (url.searchParams.get('receivedMessage'))
+		return window.location.href;
+	else if (window.location.search != '')
+		return window.location.href + '&receivedMessage=yes';
+}

@@ -5,22 +5,17 @@ import {Title} from './Title.js';
 import {Category} from './Category.js';
 import {Rating} from './Rating.js';
 import {AcceptButton, RejectButton} from './ButtonsSVG.js';
-import {handleChange, initialItemState} from './helpers.js';
 
-const useState = React.useState;
 
-export function ContainerText({errors}) {
-
-	const [item, setItem] = useState(initialItemState());
-
+export function ContainerText({item, errors, handleChange, sendForm}) {
 	return (
 		<div className="itemPage__details-text">
 			
-			<Title item={item} handleChange={(e) => handleChange(e, item, setItem)} errors={errors} />
-			<Category handleChange={(e) => handleChange(e, item, setItem)} item={item} errors={errors} />
-			<Rating />
+			<Title item={item} handleChange={handleChange} errors={errors} />
+			<Category item={item} handleChange={handleChange} errors={errors} />
+			<Rating item={item} />
 			<div className="itemPage__buttons">
-				<AcceptButton />
+				<AcceptButton sendForm={sendForm}/>
 				<RejectButton />
 			</div>
 

@@ -10,7 +10,8 @@ var _helpers = require("./helpers.js");
 var useSelector = ReactRedux.useSelector;
 var useEffect = React.useEffect;
 
-function Rating(props) {
+function Rating(_ref) {
+  var item = _ref.item;
   var useDispatch = ReactRedux.useDispatch();
   var rating = useSelector(function (state) {
     return state.rating.rating;
@@ -22,7 +23,7 @@ function Rating(props) {
     return state.rating.color;
   });
   useEffect(function () {
-    return (0, _helpers.setFormParams)(useDispatch);
+    return (0, _helpers.setRatingItem)(item, useDispatch);
   }, []);
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "itemPage__details-text-category"

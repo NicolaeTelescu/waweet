@@ -19,25 +19,20 @@ const app = express();
 app.listen(port);
 
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-
-app.use(cors());
+app.use(cors({credentials: true, origin: true}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(favicon(path.join(__dirname, 'public', 'images/favicon.ico')));
 app.use(cookieParser());
 app.use(session({
   secret: 'keyboard penguin',
-  resave: false,
-  saveUninitialized: false,
+  resave: true,
+  saveUninitialized: true,
   cookie: {
     secure: false,
     maxAge: 60000 
   }
-}
-));
+}));
 app.use(fileUpload({
   limits: { fileSize: 10 * 1024 * 1024 },
   useTempFiles : true,

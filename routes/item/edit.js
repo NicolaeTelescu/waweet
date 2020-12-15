@@ -10,22 +10,7 @@ const helpers = require('../../src/helpers/index');
 
 // Page for edit a new item
 router.get('/items/edit/:itemSlug', async function(req, res, next) {
-	try {
-		const categories = await Category.find();
-		const item = await Item.findOne({slug: req.params.itemSlug, show: true});
-
-	  	const params = {
-			categories: categories,
-			form: req.session.form ? req.session.form : item,
-			errors: req.session.errors
-	  	}
-  
-	  	req.session.destroy();
-  
-	  	res.render('index', { params: JSON.stringify(params).replace(/<\//g, "<\\/") });
-	} catch (err) {
-	  	res.json(JSON.stringify(err.message, Object.getOwnPropertyNames(err)));
-	}
+	return res.sendFile('index.html', {root: './public/html'});
 });
   
   
@@ -48,10 +33,7 @@ router.post('/items/edit/:itemSlug',
 		// Validation
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
-			req.session.form = form;
-			req.session.errors = errors.array();
-	
-			return res.redirect('/items/edit/' + req.params.itemSlug);
+			return res.status(422).json(errors.array());
 		}
 
 
@@ -86,11 +68,11 @@ router.post('/items/edit/:itemSlug',
 			}
 			
 			req.session.success = `\'${req.body.title}\' has been edited successfully`;
-			req.session.errors = false;
-			res.redirect('/items');
+			req.session.save();
+			return res.status(200).json({ status: 'OK' });
 
 		} catch (err) {
-			res.json(JSON.stringify(err.message, Object.getOwnPropertyNames(err)));
+			return res.status(422).json([{value: 'DB', msg: err.message, param: 'title', location: body}]);
 		}
 });
 

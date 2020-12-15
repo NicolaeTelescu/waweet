@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.EditItemButton = EditItemButton;
 exports.DeleteItemButton = DeleteItemButton;
 
+var _helpers = require("./../../ShowAll/helpers.js");
+
 function EditItemButton(_ref) {
   var slug = _ref.slug;
   return /*#__PURE__*/React.createElement("a", {
@@ -26,17 +28,11 @@ function EditItemButton(_ref) {
 
 function DeleteItemButton(_ref2) {
   var slug = _ref2.slug;
-
-  var deleteElement = function deleteElement() {
-    document.getElementById("deleteItem-" + slug).submit();
-  };
-
-  return /*#__PURE__*/React.createElement("form", {
+  return /*#__PURE__*/React.createElement("div", {
     className: "showItems__item__button__delete",
-    action: "/items/delete/" + slug,
-    method: "post",
-    id: "deleteItem-" + slug,
-    onClick: deleteElement
+    onClick: function onClick() {
+      return (0, _helpers.deleteFetchElement)(slug);
+    }
   }, /*#__PURE__*/React.createElement("svg", {
     width: "1em",
     height: "1em",

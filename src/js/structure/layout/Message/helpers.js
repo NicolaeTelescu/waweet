@@ -14,9 +14,19 @@ export function closeMessageTimeout() {
 	}, 5000);
 }
 
-export function getMessage() {
-	return {
-		message: params.success ? params.success : null,
-		className: params.success ? 'success' : null
-	};
+export function fetchMessage(setMessage) {
+	if (receivedMessage() === 'yes') {
+
+		fetch('http://www.localhost:3000/serverMessage')
+			.then(response => response.text())
+			.then(result => setMessage(result));
+	
+	}
+}
+
+function receivedMessage() {
+	const url = new URL(window.location.href);
+	const receivedMessageURL = url.searchParams.get('receivedMessage') ? url.searchParams.get('receivedMessage') : 'no';
+	
+	return receivedMessageURL;
 }

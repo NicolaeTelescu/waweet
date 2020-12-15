@@ -12,15 +12,17 @@ var _ImageFile = require("./ImageFile.js");
 var _helpers = require("./helpers.js");
 
 function ContainerImage(_ref) {
-  var errors = _ref.errors;
+  var item = _ref.item,
+      errors = _ref.errors;
   return /*#__PURE__*/React.createElement("div", {
     className: "itemPage__container-img"
   }, /*#__PURE__*/React.createElement("div", {
     className: "itemPage__details-img-border"
   }), /*#__PURE__*/React.createElement("img", {
     className: "itemPage__details-img",
-    src: params.image ? params.image : null
+    src: item.ID ? '/images/eating/' + item.ID + '.jpg' : null
   }), /*#__PURE__*/React.createElement(_helpers.AddImageButton, {
+    item: item,
     errors: errors
   }), /*#__PURE__*/React.createElement(_helpers.ImageError, {
     errors: errors
