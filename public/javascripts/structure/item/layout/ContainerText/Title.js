@@ -19,7 +19,7 @@ function Title(_ref) {
     className: "form-control",
     name: "title",
     type: "text",
-    maxLength: "25",
+    maxLength: "40",
     onChange: handleChange,
     placeholder: "Product title",
     value: item.title

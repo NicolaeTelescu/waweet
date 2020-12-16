@@ -8,7 +8,7 @@ export function Title({item, handleChange, errors}) {
 				<span className="itemPage__details-text-value-error">{errors.titleError ? errors.titleError.msg : null}</span>
 			</div>
 			<div className="itemPage__details-text-value">
-				<input className="form-control" name="title" type="text" maxLength="25" onChange={handleChange} placeholder="Product title" value={item.title}></input>
+				<input className="form-control" name="title" type="text" maxLength="40" onChange={handleChange} placeholder="Product title" value={item.title}></input>
 			</div>
 		</div>
 	);
