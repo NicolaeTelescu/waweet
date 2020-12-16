@@ -9,7 +9,7 @@ export function Categories(props) {
 	const categories = ['Breakfast', 'Lunch', 'Snack', 'Dinner'].map((el, index) => (
 		<div className="home__category    shadow-lg" key={index} onClick={() => goTo(`/items?category=${el}`)}>
 			<div className="home__category-label" style={{bottom: "5px", left: "6px"}}>{el}</div>
-			<img className="home__category-img" style={{objectPosition: (index === 2 ? 'bottom' : '')}} src={'/images/structure/' + el + '.jpg'}></img>
+			<img className="home__category-img" style={{objectPosition: (index === 2 ? 'bottom' : '')}} src={'/images/structure/' + el + '-resized.jpg'}></img>
 		</div>
 	));
 

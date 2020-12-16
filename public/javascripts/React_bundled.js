@@ -322,7 +322,7 @@ function Categories(props) {
       style: {
         objectPosition: index === 2 ? 'bottom' : ''
       },
-      src: '/images/structure/' + el + '.jpg'
+      src: '/images/structure/' + el + '-resized.jpg'
     }));
   });
   return /*#__PURE__*/React.createElement("div", {
