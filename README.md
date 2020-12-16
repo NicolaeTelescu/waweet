@@ -12,11 +12,19 @@ Waweet is a web app where users review food. Here you can discover new food that
 
 <br/>
 
-### Search
+### Catalog
 
 <br/>
 
-![Search](./public/images/presentation/Search.png?raw=true)
+![Catalog](./public/images/presentation/Search%20Page.png?raw=true)
+
+<br/>
+
+### Searching
+
+<br/>
+
+![Searching](./public/images/presentation/Searching.png?raw=true)
 
 <br/>
 
