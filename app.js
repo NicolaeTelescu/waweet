@@ -19,25 +19,20 @@ const app = express();
 app.listen(port);
 
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-
-app.use(cors());
+app.use(cors({credentials: true, origin: true}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(favicon(path.join(__dirname, 'public', 'images/favicon.ico')));
 app.use(cookieParser());
 app.use(session({
   secret: 'keyboard penguin',
-  resave: false,
-  saveUninitialized: false,
+  resave: true,
+  saveUninitialized: true,
   cookie: {
     secure: false,
     maxAge: 60000 
   }
-}
-));
+}));
 app.use(fileUpload({
   limits: { fileSize: 10 * 1024 * 1024 },
   useTempFiles : true,
@@ -59,17 +54,5 @@ mongoose.connect(
 
 // Every wrong route redirect to homepage (for now)
 app.use(function(req, res, next) {
-  res.redirect(404, '/product');
-});
-
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  res.redirect(404, '/');
 });

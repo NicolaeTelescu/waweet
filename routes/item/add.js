@@ -9,54 +9,30 @@ const helpers = require('../../src/helpers/index');
 
 
 // Page for adding an item
-router.get('/item/add', async function(req, res, next) {
-	try {
-		const categories = await Category.find();
-
-		const params = {
-			categories: categories,
-			form: req.session.form,
-			errors: req.session.errors
-		}
-  
-		req.session.destroy();
-  
-	  	res.render('index', { params: JSON.stringify(params).replace(/<\//g, "<\\/") });
-	} catch (err) {
-	  	res.json(JSON.stringify(err.message, Object.getOwnPropertyNames(err)));
-	}
+router.get('/items/add', async function(req, res, next) {
+	return res.sendFile('index.html', {root: './public/html'});
 });
   
   
   
 // Add a new item
-router.post('/item/add',
+router.post('/items/add',
 	itemAddValidation,
 	async function(req, res, next) {
-  
-		const form = {
-			title: req.body.title,
-			category: req.body.category,
-			rating: req.body.rating
-		};
   
 		// Validation
 		const errors = validationResult(req);
 		if (!errors.isEmpty()) {
-			req.session.form = form;
-			req.session.errors = errors.array();
-	
-			return res.redirect('/item/add');
+			return res.status(422).json(errors.array());
 		}
-  
-  
+		
 		// Adding the item to the database
 		try {
 			const count = await Item.countDocuments({});
 	
 			// Uploading image
 			if (req.files === null) {
-				return res.status(400).json({errors: [{msg: 'Image is required'}]});
+				return res.status(422).json({errors: [{msg: 'Image is required'}]});
 			}
 	
 			const image = req.files.image;
@@ -78,17 +54,18 @@ router.post('/item/add',
 				title: req.body.title,
 				category: req.body.category,
 				rating: req.body.rating,
-				slug: helpers.convertToSlug(req.body.title)
+				slug: helpers.convertToSlug(req.body.title),
+				show: true
 			});
 	
 			const savedItem = await item.save();
 			
-			
 			req.session.success = `\'${req.body.title}\' has been added successfully`;
-			req.session.errors = false;
-			res.redirect('/');
+			req.session.save();
+			return res.status(200).json({ status: 'OK' });
+
 		} catch (err) {
-			res.json(JSON.stringify(err.message, Object.getOwnPropertyNames(err)));
+			return res.status(422).json([{value: 'DB', msg: err.message, param: 'title', location: body}]);
 		}
 	}
 );

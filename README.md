@@ -12,11 +12,19 @@ Waweet is a web app where users review food. Here you can discover new food that
 
 <br/>
 
-### Search
+### Catalog
 
 <br/>
 
-![Search](./public/images/presentation/Search.png?raw=true)
+![Catalog](./public/images/presentation/Search%20Page.png?raw=true)
+
+<br/>
+
+### Searching
+
+<br/>
+
+![Searching](./public/images/presentation/Searching.png?raw=true)
 
 <br/>
 
@@ -31,6 +39,7 @@ Waweet is a web app where users review food. Here you can discover new food that
 ## Requirements
 - [MongoDB](https://www.mongodb.com/) v4.4 - Database
 - [Node.js](https://nodejs.org/en/) v12.18.3 - Web Server
+- [Watchify](https://www.npmjs.com/package/watchify) v3.11.1 - Module Bundler
 <br/><br/>
 
 ## First use:
@@ -59,7 +68,7 @@ After seeing the message \"DB has been filled successfully!\" you can close the 
 npm start
 ```
 
-Now you can enter `localhost:3000` and your application should be running. Items are duplicated for showing more explicitly the pagination.
+Now you can enter `localhost:3000` and your application should be running.
 <br/><br/>
 
 If you are a developer and you want to modify files from 'src' folder, you should start the server with:

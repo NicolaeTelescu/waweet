@@ -1,0 +1,8 @@
+.footer {
+	font: 12px MeriendaOne;
+	@include flexCenter;
+	flex-shrink: 0;
+	flex-direction: column;
+	background-color: #90ee90;
+	height: 10vh;
+}

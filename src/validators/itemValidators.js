@@ -3,7 +3,7 @@ const Category = require('../../Database/models/Category');
 const helpers = require('../helpers/index');
 const { body, param } = require('express-validator');
 
-const titleLength = body('title', 'Your title must be between 4 and 25 characters').isLength({min: 4, max: 25});
+const titleLength = body('title', 'Your title must be between 4 and 40 characters').isLength({min: 4, max: 40});
 const addTitleInUse =
 	body('title').custom(title => {
 		return Item.find({slug: helpers.convertToSlug(title), show: true}).then(items => {

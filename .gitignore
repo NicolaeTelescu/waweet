@@ -21,3 +21,4 @@ yarn-error.log*
 # Tasks and comments
 /Auxiliar/
 /Database/Database
+webpack.config.js

@@ -1,10 +1,10 @@
 'use strict';
 
-import {Header} from './structure/layout/Header.js';
-import {Footer} from './structure/layout/Footer.js';
-import {Message} from './structure/layout/Message.js';
-import {HomePage} from './structure/HomePage.js';
-import {AllItemPages} from './structure/item/_All.js';
+import {Header} from './structure/layout/Header/Header.js';
+import {Footer} from './structure/layout/Footer/Footer.js';
+import {Message} from './structure/layout/Message/Message.js';
+import {HomePage} from './structure/HomePage/HomePage.js';
+import {PackItemPages} from './structure/item/_PackPages.js';
 import {allReducers} from './redux/reducers/index.js';
 
 
@@ -22,8 +22,8 @@ function App(props) {
 			<Header />
 			<Message />
 			<Switch>
-				<Route exact path="/" component={HomePage} />
-				<Route path="/item" component={AllItemPages} />
+				<Route path="/" exact component={HomePage} />
+				<Route path="/items" component={PackItemPages} />
 			</Switch>
 			<Footer />
 		
@@ -32,9 +32,9 @@ function App(props) {
 }
 
 // Create store
-let store = Redux.createStore(allReducers);
+const store = Redux.createStore(allReducers);
 
-let domContainer = document.querySelector('#react_container');
+const domContainer = document.querySelector('#react_container');
 ReactDOM.render(
 	<Provider store={store}>
 		<Router>
